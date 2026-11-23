@@ -28,7 +28,7 @@ def load_config():
         "smtp_port": 465,
         "smtp_user": "glcodingweb@gmail.com",
         "smtp_pass": "pazgfxmesdsdknuk",
-        "tutorial_url": "https://drive.google.com/drive/folders/seu-link-do-tutorial"
+        "tutorial_url": "https://youtu.be/xxJby0kUv08"
     }
     if os.path.exists(CONFIG_FILE):
         try:
