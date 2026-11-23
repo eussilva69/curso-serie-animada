@@ -789,42 +789,6 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
   tick(); setInterval(tick, 1000);
 })();
 </script>
-<script>/* VibeCloner — anti-preloader */(function(){
-  var DELAY=4000;
-  function vw(){return window.innerWidth||document.documentElement.clientWidth||0;}
-  function vh(){return window.innerHeight||document.documentElement.clientHeight||0;}
-  function n(v){return parseFloat(v)||0;}
-  function solid(cs){return cs.backgroundColor&&cs.backgroundColor!=='rgba(0, 0, 0, 0)'&&cs.backgroundColor!=='transparent';}
-  // Detecta overlays sólidos que cobrem a tela toda a partir do canto (cortinas
-  // de transição/preloader controladas por JS que não rodou).
-  function isCover(el){var cs=getComputedStyle(el);
-    if(cs.display==='none'||cs.visibility==='hidden'||n(cs.opacity||'1')<0.1)return false;
-    if(cs.position!=='fixed'&&cs.position!=='absolute')return false;
-    if(!solid(cs))return false;
-    if(vw()<10||vh()<10)return false;
-    var r=el.getBoundingClientRect();
-    if(r.width<vw()*0.9||r.height<vh()*0.9)return false;
-    if(r.top>5||r.left>5)return false;
-    // NÃO exclui overlays com canvas/svg/img dentro: preloaders/cortinas
-    // frequentemente têm logo ou animação (Rive) no meio. z-index alto + tela
-    // cheia a partir do canto = cortina, não conteúdo.
-    return n(cs.zIndex||'0')>=2;}
-  function covers(){return [].slice.call(document.querySelectorAll('body *')).filter(isCover);}
-  function reveal(){try{
-    var de=document.documentElement,b=document.body;
-    de.classList.remove('lenis-stopped');
-    [de,b].forEach(function(el){if(el){el.style.overflow='visible';el.style.height='auto';}});
-    covers().forEach(function(el){el.style.display='none';});
-    document.querySelectorAll('[style]').forEach(function(el){var s=el.style;
-      if(s.opacity!==''&&n(s.opacity)<0.05)s.opacity='1';
-      if(s.visibility==='hidden')s.visibility='visible';});
-    window.scrollTo(0,0);
-  }catch(e){}}
-  function check(){if(covers().length){reveal();console.log('[VibeCloner] Preloader/cortina travada — conteudo revelado (tecla R para repetir).');}}
-  function arm(){setTimeout(check,DELAY);}
-  if(document.readyState==='complete')arm();else window.addEventListener('load',arm);
-  window.addEventListener('keydown',function(e){var t=(e.target&&e.target.tagName)||'';if((e.key==='r'||e.key==='R')&&!/input|textarea/i.test(t))reveal();});
-})();</script>
 <script>
 (function () {
   var modal = document.getElementById("checkoutModal");
@@ -881,9 +845,6 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
   });
 
   document.getElementById("closeCheckoutBtn").addEventListener("click", closeCheckout);
-  modal.addEventListener("click", function(e) {
-    if (e.target === modal) closeCheckout();
-  });
 
   // Config modal
   document.getElementById("openConfigBtn").addEventListener("click", function() {
