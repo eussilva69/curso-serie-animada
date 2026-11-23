@@ -5,7 +5,7 @@ function getConfig() {
   const defaults = {
     mercado_pago_access_token: process.env.MERCADO_PAGO_ACCESS_TOKEN || "APP_USR-7458996510149615-110903-8738600b8589a9741d32a85a8040d38b-408387365",
     mercado_pago_public_key: process.env.MERCADO_PAGO_PUBLIC_KEY || "APP_USR-59d9f687-662c-4fc7-8c16-026ed86df6bc",
-    product_title: "Série Animada do Zero",
+    product_title: "Faça sua série animada e ganhe com isso",
     product_price: 29.90,
     tutorial_url: "https://youtu.be/xxJby0kUv08"
   };

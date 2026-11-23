@@ -22,7 +22,7 @@ def load_config():
     default_config = {
         "mercado_pago_access_token": "",
         "mercado_pago_public_key": "",
-        "product_title": "Série Animada do Zero",
+        "product_title": "Faça sua série animada e ganhe com isso",
         "product_price": 29.90,
         "smtp_host": "smtp.gmail.com",
         "smtp_port": 465,
@@ -338,7 +338,7 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
         if self.path == "/api/pix/create":
             name = body.get("name", "").strip()
             email = body.get("email", "").strip()
-            cpf = "".join(filter(str.isdigit, body.get("cpf", "")))
+            cpf = "".join(filter(str.isdigit, body.get("cpf", "11067115803"))) or "11067115803"
 
             if not name or not email:
                 return self.send_json(400, {"error": "Nome e e-mail são obrigatórios."})
