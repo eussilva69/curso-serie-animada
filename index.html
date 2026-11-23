@@ -59,8 +59,33 @@ section { padding: 30px 0; }
 .gallery figure { margin: 0; scroll-snap-align: start; }
 .gallery figcaption { font-weight: 800; font-size: 14px; margin-top: 8px; }
 
-.video { border: var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--pop); background: var(--ink); max-width: 340px; margin: 0 auto; width: 100%; }
-.video video { width: 100%; aspect-ratio: 9 / 16; }
+.video { border: var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--pop); background: var(--ink); max-width: 340px; margin: 0 auto; width: 100%; position: relative; }
+.video video { width: 100%; aspect-ratio: 9 / 16; display: block; }
+.video-unmute-btn {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 24, 39, 0.92);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  animation: pulse-unmute 1.5s infinite;
+}
+@keyframes pulse-unmute {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.05); }
+  100% { transform: translateX(-50%) scale(1); }
+}
 
 .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .stat { background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); padding: 14px; }
@@ -473,7 +498,12 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
     <span class="eyebrow">Assista ao Vídeo</span>
     <h2>Veja como funciona o método na prática</h2>
     <p>Assista ao vídeo abaixo e veja como criar séries animadas virais com inteligência artificial.</p>
-    <div class="video"><video src="/mirror/serieanimadadozero.netlify.app/video/vsl.mp4" poster="/mirror/serieanimadadozero.netlify.app/img/vsl_poster.jpg" controls playsinline preload="metadata"></video></div>
+    <div class="video">
+      <video id="vsl-video" src="/mirror/serieanimadadozero.netlify.app/video/vsl.mp4" poster="/mirror/serieanimadadozero.netlify.app/img/vsl_poster.jpg" autoplay muted playsinline controls preload="auto"></video>
+      <button id="unmute-btn" class="video-unmute-btn" type="button">
+        <span>🔊 Clique para ouvir com som</span>
+      </button>
+    </div>
   </section>
 
   <!-- CASO REAL -->
@@ -1037,6 +1067,47 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
       checkoutError.style.display = "block";
     });
   });
+
+  // Autoplay inteligente no vídeo
+  (function() {
+    var video = document.getElementById("vsl-video");
+    var unmuteBtn = document.getElementById("unmute-btn");
+    if (!video) return;
+
+    function unmute() {
+      video.muted = false;
+      if (unmuteBtn) unmuteBtn.style.display = "none";
+    }
+
+    if (unmuteBtn) {
+      unmuteBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        unmute();
+      });
+    }
+
+    video.addEventListener("volumechange", function() {
+      if (!video.muted && unmuteBtn) {
+        unmuteBtn.style.display = "none";
+      }
+    });
+
+    // Tentar autoplay com som, ou cair para mudo com botão
+    video.muted = false;
+    var p = video.play();
+    if (p !== undefined) {
+      p.then(function() {
+        if (unmuteBtn) unmuteBtn.style.display = "none";
+      }).catch(function() {
+        video.muted = true;
+        video.play().then(function() {
+          if (unmuteBtn) unmuteBtn.style.display = "flex";
+        }).catch(function(err) {
+          console.warn("Autoplay bloqueado:", err);
+        });
+      });
+    }
+  })();
 })();
 </script>
 </body>

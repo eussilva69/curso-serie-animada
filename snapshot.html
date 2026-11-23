@@ -154,7 +154,12 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
     <span class="eyebrow">Assista ao Vídeo</span>
     <h2>Veja como funciona o método na prática</h2>
     <p>Assista ao vídeo abaixo e veja como criar séries animadas virais com inteligência artificial.</p>
-    <div class="video"><video src="/mirror/serieanimadadozero.netlify.app/video/vsl.mp4" poster="/mirror/serieanimadadozero.netlify.app/img/vsl_poster.jpg" controls="" playsinline="" preload="metadata"></video></div>
+    <div class="video">
+      <video id="vsl-video" src="/mirror/serieanimadadozero.netlify.app/video/vsl.mp4" poster="/mirror/serieanimadadozero.netlify.app/img/vsl_poster.jpg" autoplay muted playsinline controls preload="auto"></video>
+      <button id="unmute-btn" class="video-unmute-btn" type="button" style="display:none">
+        <span>🔊 Clique para ouvir com som</span>
+      </button>
+    </div>
   </section>
 
   <!-- CASO REAL -->
