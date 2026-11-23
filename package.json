@@ -1,0 +1,12 @@
+{
+  "name": "curso-serie-animada",
+  "version": "1.0.0",
+  "description": "Landing page com checkout transparente Pix Mercado Pago",
+  "main": "server.py",
+  "scripts": {
+    "start": "python server.py 500"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}
