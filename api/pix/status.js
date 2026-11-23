@@ -45,12 +45,12 @@ async function sendEmail(buyerEmail, buyerName, tutorialUrl) {
     from: `"${title}" <${config.smtp_user}>`,
     to: buyerEmail,
     subject: `🎉 Seu Acesso Chegou: ${title} (Vídeo Aula Completa)`,
-    text: `Olá, ${name}!\n\nSeu pagamento de R$ 19,90 via Pix foi confirmado com sucesso!\n\nAqui está o seu link de acesso à vídeo aula:\n${tutorialUrl}\n\nBons estudos!\nEquipe ${title} · @caio.deferias`,
+    text: `Olá, ${name}!\n\nSeu pagamento de R$ 29,90 via Pix foi confirmado com sucesso!\n\nAqui está o seu link de acesso à vídeo aula:\n${tutorialUrl}\n\nBons estudos!\nEquipe ${title} · @caio.deferias`,
     html: `
       <div style="font-family: sans-serif; background-color: #FFF7F2; padding: 20px; color: #16131F;">
         <div style="max-width: 520px; margin: 0 auto; background: #fff; border: 3px solid #16131F; border-radius: 18px; padding: 30px 24px;">
           <h1 style="font-size: 24px; margin: 0 0 12px 0;">Parabéns, ${name}! 🎉</h1>
-          <p>O seu pagamento de <b>R$ 19,90</b> via Pix foi aprovado com sucesso!</p>
+          <p>O seu pagamento de <b>R$ 29,90</b> via Pix foi aprovado com sucesso!</p>
           <div style="background: #FFE3EC; border: 2px dashed #FF5D8F; border-radius: 12px; padding: 16px; margin: 20px 0; text-align: center;">
             <p style="margin: 0 0 10px 0; font-weight: bold;">👇 Clique abaixo para assistir à vídeo aula:</p>
             <a href="${tutorialUrl}" target="_blank" style="display: inline-block; background: #FF5D8F; color: #fff; text-decoration: none; font-size: 18px; font-weight: bold; padding: 14px 28px; border: 2px solid #16131F; border-radius: 10px;">👉 ACESSAR A VÍDEO AULA AGORA</a>

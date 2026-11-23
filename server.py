@@ -23,7 +23,7 @@ def load_config():
         "mercado_pago_access_token": "",
         "mercado_pago_public_key": "",
         "product_title": "Série Animada do Zero",
-        "product_price": 19.90,
+        "product_price": 29.90,
         "smtp_host": "smtp.gmail.com",
         "smtp_port": 465,
         "smtp_user": "glcodingweb@gmail.com",
@@ -86,7 +86,7 @@ def send_tutorial_email(buyer_email, buyer_name, tutorial_url):
     # Plain text version
     text_content = f"""Olá, {display_name}!
 
-O seu pagamento via Pix de R$ 19,90 foi confirmado com sucesso!
+O seu pagamento via Pix de R$ 29,90 foi confirmado com sucesso!
 
 Aqui está o seu link de acesso com todas as vídeo aulas e materiais da {title}:
 {tutorial_url}
@@ -122,7 +122,7 @@ Equipe {title} · @caio.deferias
   <div class="card">
     <span class="badge">Acesso Confirmado</span>
     <h1>Parabéns, {display_name}! 🎉</h1>
-    <p>O seu pagamento de <b>R$ 19,90</b> via Pix foi confirmado instantaneamente.</p>
+    <p>O seu pagamento de <b>R$ 29,90</b> via Pix foi confirmado instantaneamente.</p>
     <p>O seu acesso ao curso completo em vídeo aulas e materiais da <b>{title}</b> já está liberado:</p>
     
     <div class="highlight-box">
@@ -217,7 +217,7 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
             return self.send_json(200, {
                 "has_token": has_token,
                 "token_preview": preview,
-                "product_price": config.get("product_price", 19.90),
+                "product_price": config.get("product_price", 29.90),
                 "product_title": config.get("product_title", "Série Animada do Zero"),
                 "tutorial_url": config.get("tutorial_url", "")
             })
@@ -345,7 +345,7 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
 
             config = load_config()
             token = config.get("mercado_pago_access_token", "").strip()
-            price = float(config.get("product_price", 19.90))
+            price = float(config.get("product_price", 29.90))
             title = config.get("product_title", "Série Animada do Zero")
 
             parts = name.split()
