@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!-- VibeCloner · mirror | https://serieanimadadozero.netlify.app/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaexg2s2bPjEH66gaP4qKiT8sa0cZzVQmoclLsbLZiMsKDVpAN7DBEGrOemDxQ_aem_q27meIS3qPg9s2UMdHvfxg | 2026-11-23T17:49:11.550Z -->
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=fcf442cc-a91f-4181-bc4b-e815541a2314
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série Animada do Zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&amp;family=Figtree:wght@400;600;800&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Mundo da Mãe em Dobro: papel claro com bolinhas rosadas, contorno grosso, sombras chapadas; rosa e verde-água, amarelo só de detalhe. Uma coluna, pensada para o celular. */
+  --bg: #FFF7F2; --paper: #FFE3EC; --teal: #20A5A0; --sun: #FFCF3D; --ink: #16131F; --card: #FFFFFF; --muted: #4A4458; --cta: #FF5D8F; --pink: #FF8FB1; --green: #7BD389; --cream: #FFF3C4;
+  --font-display: "Lilita One", "Arial Black", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --line: 3px solid var(--ink); --pop: 4px 4px 0 var(--ink);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); background-image: radial-gradient(rgba(255,93,143,.16) 1.4px, transparent 1.6px); background-size: 18px 18px;
+  color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.5; }
+a { color: inherit; }
+img, video { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: .3px; text-wrap: balance; margin: 0; line-height: 1.08; }
+h1 { font-size: clamp(40px, 11vw, 58px); }
+h2 { font-size: clamp(28px, 7.5vw, 36px); }
+h3 { font-size: 21px; }
+p { margin: 0; }
+.wrap { max-width: 560px; margin: 0 auto; padding: 0 18px; }
+section { padding: 30px 0; }
+.stack { display: flex; flex-direction: column; gap: 14px; }
+
+/* faixa de urgência */
+.banner { position: sticky; top: 0; z-index: 10; background: var(--ink); color: #fff; text-align: center; font-weight: 800; font-size: 15px; padding: 9px 14px; }
+.banner b { color: var(--pink); }
+
+.eyebrow { align-self: flex-start; font-weight: 800; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; background: var(--teal); color: #fff; padding: 4px 11px; border-radius: 999px; }
+.card { background: var(--card); border: var(--line); border-radius: 16px; box-shadow: var(--pop); padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.lead { font-size: 18px; color: var(--muted); }
+.sub { font-family: var(--font-display); font-size: 25px; line-height: 1.15; }
+.sub em { font-style: normal; background: var(--sun); border: 2.5px solid var(--ink); border-radius: 8px; padding: 0 6px; }
+
+.btn { display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--font-display); font-size: 21px; letter-spacing: .3px;
+  text-decoration: none; padding: 15px 18px; border: var(--line); border-radius: 14px; box-shadow: var(--pop); background: var(--cta); color: #fff; transition: transform .12s, box-shadow .12s; }
+.btn:hover { transform: translate(-1px,-1px); box-shadow: 6px 6px 0 var(--ink); }
+.btn:active { transform: translate(3px,3px); box-shadow: 1px 1px 0 var(--ink); }
+.btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px dashed var(--ink); outline-offset: 3px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.badges span { font-weight: 800; font-size: 13px; background: var(--card); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 11px; }
+
+.covers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.covers img, .gallery img { border: var(--line); border-radius: 14px; box-shadow: var(--pop); }
+.gallery { display: grid; grid-auto-flow: column; grid-auto-columns: 62%; gap: 14px; overflow-x: auto; padding: 4px 4px 12px; scroll-snap-type: x mandatory; }
+.gallery figure { margin: 0; scroll-snap-align: start; }
+.gallery figcaption { font-weight: 800; font-size: 14px; margin-top: 8px; }
+
+.video { border: var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--pop); background: var(--ink); max-width: 340px; margin: 0 auto; width: 100%; }
+.video video { width: 100%; aspect-ratio: 9 / 16; }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat { background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); padding: 14px; }
+.stat b { display: block; font-family: var(--font-display); font-size: 34px; font-weight: 400; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--muted); font-weight: 600; }
+.note { font-size: 14px; color: var(--muted); }
+.req { background: #FFE3EC; border: 2.5px solid var(--ink); border-radius: 14px; padding: 10px 14px; font-size: 15px; line-height: 1.4; text-align: left; }
+.req b { color: var(--ink); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 46px 1fr; gap: 12px; align-items: start; background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); padding: 14px; }
+.steps li::before { content: counter(s); font-family: var(--font-display); font-size: 22px; width: 46px; height: 46px; display: grid; place-items: center; background: var(--pink); color: #fff; border: var(--line); border-radius: 50%; }
+.steps b { display: block; }
+.steps span { color: var(--muted); }
+
+table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border: var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--pop); font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; vertical-align: top; }
+th { background: var(--ink); color: #fff; font-size: 13px; letter-spacing: .3px; }
+td { border-top: 1px solid #E6E1EE; }
+td.num { font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.pages { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pages img { border: 2.5px solid var(--ink); border-radius: 8px; box-shadow: var(--pop); background: #fff; }
+
+.mods { list-style: none; margin: 0; padding: 0; background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); overflow: hidden; }
+.mods li { display: grid; grid-template-columns: 92px 1fr; gap: 8px; padding: 10px 14px; border-top: 1px solid #E6E1EE; font-weight: 600; }
+.mods li:first-child { border-top: 0; }
+.mods li small { font-weight: 800; font-size: 11px; letter-spacing: 1.2px; color: var(--teal); padding-top: 3px; }
+
+.checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.checks li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; }
+.checks li::before { content: "✓"; font-weight: 800; color: var(--cta); font-size: 19px; line-height: 1.3; }
+.checks.no li::before { content: "✕"; color: var(--muted); }
+
+.bonus { background: #E3F6F4; border: 2.5px dashed var(--ink); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.author { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; }
+.author img { border: var(--line); border-radius: 16px; background: #ffe1b8; box-shadow: var(--pop); }
+
+.price { background: var(--card); border: 4px solid var(--ink); border-radius: 20px; box-shadow: 6px 6px 0 var(--ink); padding: 22px 18px; text-align: center; display: flex; flex-direction: column; gap: 12px; }
+.price .value { font-family: var(--font-display); font-size: 64px; line-height: 1; }
+.price .value small { font-size: 24px; }
+.timer { display: flex; justify-content: center; gap: 8px; }
+.timer div { background: var(--ink); color: #fff; border-radius: 10px; padding: 6px 10px; min-width: 64px; }
+.timer b { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 400; font-variant-numeric: tabular-nums; }
+.timer span { font-size: 11px; letter-spacing: 1px; font-weight: 800; }
+
+details { background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); padding: 12px 14px; }
+details + details { margin-top: 12px; }
+summary { cursor: pointer; font-weight: 800; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
+summary::after { content: "+"; font-family: var(--font-display); font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { margin-top: 8px; color: var(--muted); }
+
+.series { display: flex; flex-direction: column; gap: 10px; }
+.serie { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--card); border: 2.5px solid var(--ink); border-radius: 12px; padding: 10px 12px; }
+.serie b { display: block; }
+.serie span { font-size: 13px; color: var(--muted); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.chip { font-weight: 800; font-size: 13px; text-decoration: none; padding: 5px 10px; border: 2px solid var(--ink); border-radius: 999px; background: var(--paper); }
+footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px 18px 40px; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover, .btn:active { transform: none; } }
+</style>
+<style>
+  .imageye-selected {
+    outline: 2px solid black !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+  }
+</style></head>
+<body>
+
+<div class="banner" id="banner">Preço de lançamento: <b>R$ 9,90</b></div>
+
+<main class="wrap">
+
+  <!-- HERÓI -->
+  <section class="stack" style="padding-top:26px">
+    <span class="eyebrow">Curso em Vídeo Aulas · Versão para Computador</span>
+    <h1>Série Animada do Zero</h1>
+    <p class="sub">Mais de 1 Milhão de Views. <em>Audiência e engajamento logo no 1º episódio.</em></p>
+    <p class="lead">O método validado para criar séries animadas virais em que o público vota no próximo episódio, usando o app do Claude no computador e o ElevenLabs. Sem saber desenhar e sem computador potente.</p>
+    <a class="btn checkout" href="#checkout">Quero começar por R$ 9,90</a>
+    <div class="badges"><span>Acesso imediato</span><span>Pix ou cartão</span><span>Garantia de 7 dias</span></div>
+    <div class="covers">
+      <figure style="margin:0"><img src="/mirror/serieanimadadozero.netlify.app/img/capa_nova_2.jpg" alt="Capa do Episódio 1 de Lucas e os Cachorrinhos, com 1,8 milhão de visualizações" width="390" height="692" style="width:100%;aspect-ratio:9/14;object-fit:cover"><figcaption class="note" style="margin-top:6px;font-weight:800">Lucas e os Cachorrinhos · EP 1</figcaption></figure>
+      <figure style="margin:0"><img src="/mirror/serieanimadadozero.netlify.app/img/capa_nova_3.jpg" alt="Capa do Episódio 1 de Lucas, com 585 mil visualizações" width="390" height="692" style="width:100%;aspect-ratio:9/14;object-fit:cover"><figcaption class="note" style="margin-top:6px;font-weight:800">Lucas · EP 1</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- VSL / VÍDEO -->
+  <section class="stack">
+    <span class="eyebrow">Assista ao Vídeo</span>
+    <h2>Veja como funciona o método na prática</h2>
+    <p>Assista ao vídeo abaixo e veja como criar séries animadas virais com inteligência artificial.</p>
+    <div class="video"><video src="/mirror/serieanimadadozero.netlify.app/video/vsl.mp4" poster="/mirror/serieanimadadozero.netlify.app/img/vsl_poster.jpg" controls="" playsinline="" preload="metadata"></video></div>
+  </section>
+
+  <!-- CASO REAL -->
+  <section class="stack">
+    <span class="eyebrow">O caso real</span>
+    <h2>3 séries, o mesmo método</h2>
+    <div class="stats">
+      <div class="stat"><b>+1 mil</b><span>seguidores no 1º dia da Mãe em Dobro</span></div>
+      <div class="stat"><b>446 mil</b><span>visualizações no Episódio 5 da Mãe em Dobro</span></div>
+      <div class="stat"><b>389 mil</b><span>visualizações no Episódio 1 da Efetiva ou Rua</span></div>
+      <div class="stat"><b>+24 mil</b><span>seguidores no Instagram somando as 3 séries do método</span></div>
+    </div>
+    <p class="note">Números de novembro de 2026. Além da Mãe em Dobro (11,3 mil seguidores no Instagram com 7 vídeos), o mesmo método criou a Efetiva ou Rua (11,2 mil com 2 vídeos) e a Modo Difícil (1.512 com 3 vídeos). As três cresceram já nos primeiros dias. São resultados meus: o seu depende do seu nicho, da sua constância e dos seus testes.</p>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="stack">
+    <span class="eyebrow">Os episódios</span>
+    <h2>O público escolheu, a série andou</h2>
+    <p class="note">Arraste para o lado. As capas e as visualizações são do Instagram.</p>
+    <div class="gallery" tabindex="0" aria-label="Capas dos episódios">
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep1.jpg" alt="EP 1 · Viúva com gêmeos e R$ 0" width="390" height="692"><figcaption>EP 1 · Viúva com gêmeos e R$ 0</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep2.jpg" alt="EP 2 · Esgotou em 15 minutos" width="390" height="692"><figcaption>EP 2 · Esgotou em 15 minutos</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep3.jpg" alt="EP 3 · A fiscalização chegou" width="390" height="692"><figcaption>EP 3 · A fiscalização chegou</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep4.jpg" alt="EP 4 · A sogra denunciou ela" width="390" height="692"><figcaption>EP 4 · A sogra denunciou ela</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep5.jpg" alt="EP 5 · A sogra não tem licença: 446 mil views" width="390" height="692"><figcaption>EP 5 · A sogra não tem licença: 446 mil views</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep6.jpg" alt="EP 6 · Vocês bateram a meta!" width="390" height="692"><figcaption>EP 6 · Vocês bateram a meta!</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/efe_ep1.jpg" alt="Efetiva ou Rua · EP 1: 389 mil views" width="390" height="692"><figcaption>Efetiva ou Rua · EP 1: 389 mil views</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/md_ep1.jpg" alt="Modo Difícil · EP 1: 54 mil views" width="390" height="692"><figcaption>Modo Difícil · EP 1: 54 mil views</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- PRÉVIA DO CURSO -->
+  <section class="stack">
+    <span class="eyebrow">Por dentro das aulas</span>
+    <h2>Vídeo aulas práticas, prompts prontos para copiar</h2>
+    <div class="pages">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-01.q16p67.jpg" alt="Módulo do curso em vídeo aula com prompts prontos">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-02.q16p67.jpg" alt="Sumário das vídeo aulas">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-06.q16p67.jpg" alt="Módulo na prática com prompt">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-25.q16p67.jpg" alt="Estudo de caso nas aulas">
+    </div>
+  </section>
+
+  <!-- MÓDULOS -->
+  <section class="stack">
+    <span class="eyebrow">O que você aprende</span>
+    <h2>11 módulos, na ordem em que você usa</h2>
+    <ul class="mods">
+      <li><small>PASSO 0</small>Preparando o computador</li>
+      <li><small>MÓDULO 1</small>A fórmula das séries "você decide"</li>
+      <li><small>MÓDULO 2</small>Achando 3 perfis em alta</li>
+      <li><small>MÓDULO 3</small>Coletando o material</li>
+      <li><small>MÓDULO 4</small>Extraindo a fórmula com o Claude</li>
+      <li><small>MÓDULO 5</small>Criando a série e o perfil do zero</li>
+      <li><small>MÓDULO 6</small>Por que 2D</li>
+      <li><small>MÓDULO 7</small>Vozes no ElevenLabs</li>
+      <li><small>MÓDULO 8</small>Roteiro e áudio do episódio</li>
+      <li><small>MÓDULO 9</small>Animação com o Claude</li>
+      <li><small>SOCORRO</small>Deu errado, e agora?</li>
+      <li><small>MÓDULO 10</small>Capa, legenda e postagem</li>
+      <li><small>MÓDULO 11</small>Comentários viram episódios</li>
+      <li><small>CASO REAL</small>A Mãe em Dobro por dentro</li>
+    </ul>
+  </section>
+
+  <!-- MATERIAL À PARTE -->
+  <section class="stack">
+    <div class="bonus">
+      <span class="eyebrow">Extra opcional no checkout · R$ 9,90</span>
+      <h3>50 Ideias de Séries para Fazer Sucesso</h3>
+      <p>50 séries prontas para animar, cada uma com protagonista, conflito, gancho do Episódio 1 e a primeira votação, em 10 temas. Para quem quer pular a parte mais difícil e começar hoje.</p>
+      <p class="note" style="margin:0"><b>Não está incluído no curso.</b> Você pode adicionar na hora do pagamento, por mais R$ 9,90.</p>
+    </div>
+  </section>
+
+  <!-- QUEM CRIOU -->
+  <section class="stack">
+    <span class="eyebrow">Quem está por trás</span>
+    <div class="author">
+      <div style="width:110px;height:110px;border:var(--line);border-radius:18px;background:#FFCF3D;box-shadow:var(--pop);display:grid;place-items:center;font-size:46px;">🎬</div>
+      <div class="stack" style="gap:8px">
+        <h3>Caio</h3>
+        <p>Criador de séries animadas que acumulam mais de 1 milhão de visualizações no Instagram e TikTok. Este curso em vídeo aulas mostra o processo exato e validado que eu uso, com os prompts prontos de verdade.</p>
+        <a class="chip" style="align-self:flex-start" href="https://www.instagram.com/caio.deferias" target="_blank" rel="noopener">@caio.deferias</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACESSO -->
+  <section class="stack">
+    <span class="eyebrow">Acesso imediato</span>
+    <h2>O que chega no seu e-mail</h2>
+    <div class="card">
+      <ul class="checks">
+        <li>Curso completo em vídeo aulas práticas, com os 11 módulos passo a passo</li>
+        <li>Kit de prompts prontos para copiar e colar</li>
+        <li>Estudos de caso reais de séries com mais de 1 milhão de visualizações</li>
+        <li>Seção "Deu errado, e agora?" com prompts de correção</li>
+        <li>Checklists de criação e de postagem</li>
+        <li>Acesso a todas as aulas gravadas na tela</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PREÇO -->
+  <section id="comprar">
+    <div class="price">
+      <span class="eyebrow" style="align-self:center">Preço de lançamento</span>
+      <div class="value">R$ 9<small>,90</small></div>
+      <p>Pagamento único no Pix. Acesso imediato enviado para seu e-mail.</p>
+
+      <div class="timer" id="timer" hidden="">
+        <div><b data-u="h">00</b><span>HORAS</span></div><div><b data-u="m">00</b><span>MIN</span></div><div><b data-u="s">00</b><span>SEG</span></div>
+      </div>
+      <p class="note" id="timerNote" hidden=""></p>
+      <a class="btn checkout" href="#checkout">Comprar agora</a>
+      <p class="note">Garantia de 7 dias: se não gostar, devolução garantida.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="stack">
+    <span class="eyebrow">Perguntas frequentes</span>
+    <details><summary>Preciso saber desenhar ou animar?</summary><p>Não. Os personagens e a animação 2D são feitos pelo Claude a partir dos prompts ensinados nas vídeo aulas.</p></details>
+    <details><summary>Nunca usei o Claude. Consigo?</summary><p>Consegue. As vídeo aulas mostram o passo a passo na tela, e todo prompt já vem pronto: você só precisa copiar e colar.</p></details>
+    <details><summary>Funciona com o Claude gratuito?</summary><p>Não. O curso precisa do Claude Pro ou de um plano superior (Max). O plano gratuito não tem o navegador do app, que o Claude usa para pesquisar os perfis, abrir os vídeos e ler os comentários, e também não dá conta de gerar as animações.</p></details>
+    <details><summary>Quanto vou gastar com as ferramentas?</summary><p>O mínimo é o Claude Pro (cerca de R$ 110 por mês), porque o plano gratuito não tem o navegador do app. No ElevenLabs dá para testar as vozes no plano gratuito, e para postar o recomendado é o Starter (cerca de R$ 34 por mês).</p></details>
+    <details><summary>Dá para fazer pelo celular?</summary><p>Por enquanto o curso é para computador. O método usa o app do Claude no computador, com um navegador próprio que pesquisa perfis, abre vídeos e lê comentários sozinho. Postar e acompanhar a série você faz pelo celular normalmente. Estou estudando as possibilidades de uma versão do curso feita toda pelo celular.</p></details>
+    <details><summary>Que computador eu preciso?</summary><p>Qualquer computador com Windows ou Mac em que dê para instalar o app do Claude. Não precisa ser potente nem ter placa de vídeo: quem gera a animação é o Claude.</p></details>
+    <details><summary>Posso usar os mesmos personagens na minha série?</summary><p>O curso ensina a fórmula exata para criar a sua própria série, com seu personagem, nome e dinâmica originais.</p></details>
+    <details><summary>Como recebo o acesso?</summary><p>Assim que o Pix for confirmado (leva poucos segundos), você recebe imediatamente no seu e-mail o link para acessar todas as vídeo aulas gravadas e os materiais.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia total para pedir a devolução integral do valor.</p></details>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="stack" style="text-align:center">
+    <h2>A sua série começa com uma ideia</h2>
+    <p class="lead">E o público decide o resto.</p>
+    <a class="btn checkout" href="#checkout">Começar por R$ 9,90</a>
+    <div class="badges"><span>Acesso imediato</span><span>Garantia de 7 dias</span></div>
+  </section>
+
+  <!-- SÉRIES -->
+  <section class="stack">
+    <span class="eyebrow">Assista às séries</span>
+    <div class="series">
+      <div class="serie"><div><b>Mãe em Dobro</b><span>@_maeemdobro</span></div><div class="chips"><a class="chip" href="https://www.instagram.com/_maeemdobro/">Instagram</a><a class="chip" href="https://www.tiktok.com/@maeemdobro1">TikTok</a></div></div>
+      <div class="serie"><div><b>Modo Difícil</b><span>@mododificilserie</span></div><div class="chips"><a class="chip" href="https://www.instagram.com/mododificilserie/">Instagram</a><a class="chip" href="https://www.tiktok.com/@mododificilserie">TikTok</a></div></div>
+      <div class="serie"><div><b>Efetiva ou Rua</b><span>@efetivaourua</span></div><div class="chips"><a class="chip" href="https://www.instagram.com/efetivaourua/">Instagram</a><a class="chip" href="https://www.tiktok.com/@efetivaourua">TikTok</a></div></div>
+    </div>
+  </section>
+</main>
+<footer>Série Animada do Zero · Método Mãe em Dobro</footer>
+</body></html>

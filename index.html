@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<!-- VibeCloner · mirror | https://serieanimadadozero.netlify.app/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaexg2s2bPjEH66gaP4qKiT8sa0cZzVQmoclLsbLZiMsKDVpAN7DBEGrOemDxQ_aem_q27meIS3qPg9s2UMdHvfxg | 2026-11-23T17:49:11.550Z -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=fcf442cc-a91f-4181-bc4b-e815541a2314
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série Animada do Zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="/mirror/fonts.googleapis.com/css2.q1hkc339" rel="stylesheet">
+<style>
+:root {
+  /* Mundo da Mãe em Dobro: papel claro com bolinhas rosadas, contorno grosso, sombras chapadas; rosa e verde-água, amarelo só de detalhe. Uma coluna, pensada para o celular. */
+  --bg: #FFF7F2; --paper: #FFE3EC; --teal: #20A5A0; --sun: #FFCF3D; --ink: #16131F; --card: #FFFFFF; --muted: #4A4458; --cta: #FF5D8F; --pink: #FF8FB1; --green: #7BD389; --cream: #FFF3C4;
+  --font-display: "Lilita One", "Arial Black", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --line: 3px solid var(--ink); --pop: 4px 4px 0 var(--ink);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); background-image: radial-gradient(rgba(255,93,143,.16) 1.4px, transparent 1.6px); background-size: 18px 18px;
+  color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.5; }
+a { color: inherit; }
+img, video { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: .3px; text-wrap: balance; margin: 0; line-height: 1.08; }
+h1 { font-size: clamp(40px, 11vw, 58px); }
+h2 { font-size: clamp(28px, 7.5vw, 36px); }
+h3 { font-size: 21px; }
+p { margin: 0; }
+.wrap { max-width: 560px; margin: 0 auto; padding: 0 18px; }
+section { padding: 30px 0; }
+.stack { display: flex; flex-direction: column; gap: 14px; }
+
+/* faixa de urgência */
+.banner { position: sticky; top: 0; z-index: 10; background: var(--ink); color: #fff; text-align: center; font-weight: 800; font-size: 15px; padding: 9px 14px; }
+.banner b { color: var(--pink); }
+
+.eyebrow { align-self: flex-start; font-weight: 800; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; background: var(--teal); color: #fff; padding: 4px 11px; border-radius: 999px; }
+.card { background: var(--card); border: var(--line); border-radius: 16px; box-shadow: var(--pop); padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.lead { font-size: 18px; color: var(--muted); }
+.sub { font-family: var(--font-display); font-size: 25px; line-height: 1.15; }
+.sub em { font-style: normal; background: var(--sun); border: 2.5px solid var(--ink); border-radius: 8px; padding: 0 6px; }
+
+.btn { display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--font-display); font-size: 21px; letter-spacing: .3px;
+  text-decoration: none; padding: 15px 18px; border: var(--line); border-radius: 14px; box-shadow: var(--pop); background: var(--cta); color: #fff; transition: transform .12s, box-shadow .12s; }
+.btn:hover { transform: translate(-1px,-1px); box-shadow: 6px 6px 0 var(--ink); }
+.btn:active { transform: translate(3px,3px); box-shadow: 1px 1px 0 var(--ink); }
+.btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px dashed var(--ink); outline-offset: 3px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.badges span { font-weight: 800; font-size: 13px; background: var(--card); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 11px; }
+
+.covers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.covers img, .gallery img { border: var(--line); border-radius: 14px; box-shadow: var(--pop); }
+.gallery { display: grid; grid-auto-flow: column; grid-auto-columns: 62%; gap: 14px; overflow-x: auto; padding: 4px 4px 12px; scroll-snap-type: x mandatory; }
+.gallery figure { margin: 0; scroll-snap-align: start; }
+.gallery figcaption { font-weight: 800; font-size: 14px; margin-top: 8px; }
+
+.video { border: var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--pop); background: var(--ink); max-width: 340px; margin: 0 auto; width: 100%; }
+.video video { width: 100%; aspect-ratio: 9 / 16; }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat { background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); padding: 14px; }
+.stat b { display: block; font-family: var(--font-display); font-size: 34px; font-weight: 400; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--muted); font-weight: 600; }
+.note { font-size: 14px; color: var(--muted); }
+.req { background: #FFE3EC; border: 2.5px solid var(--ink); border-radius: 14px; padding: 10px 14px; font-size: 15px; line-height: 1.4; text-align: left; }
+.req b { color: var(--ink); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 46px 1fr; gap: 12px; align-items: start; background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); padding: 14px; }
+.steps li::before { content: counter(s); font-family: var(--font-display); font-size: 22px; width: 46px; height: 46px; display: grid; place-items: center; background: var(--pink); color: #fff; border: var(--line); border-radius: 50%; }
+.steps b { display: block; }
+.steps span { color: var(--muted); }
+
+table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border: var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--pop); font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; vertical-align: top; }
+th { background: var(--ink); color: #fff; font-size: 13px; letter-spacing: .3px; }
+td { border-top: 1px solid #E6E1EE; }
+td.num { font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.pages { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pages img { border: 2.5px solid var(--ink); border-radius: 8px; box-shadow: var(--pop); background: #fff; }
+
+.mods { list-style: none; margin: 0; padding: 0; background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); overflow: hidden; }
+.mods li { display: grid; grid-template-columns: 92px 1fr; gap: 8px; padding: 10px 14px; border-top: 1px solid #E6E1EE; font-weight: 600; }
+.mods li:first-child { border-top: 0; }
+.mods li small { font-weight: 800; font-size: 11px; letter-spacing: 1.2px; color: var(--teal); padding-top: 3px; }
+
+.checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.checks li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; }
+.checks li::before { content: "✓"; font-weight: 800; color: var(--cta); font-size: 19px; line-height: 1.3; }
+.checks.no li::before { content: "✕"; color: var(--muted); }
+
+.bonus { background: #E3F6F4; border: 2.5px dashed var(--ink); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.author { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; }
+.author img { border: var(--line); border-radius: 16px; background: #ffe1b8; box-shadow: var(--pop); }
+
+.price { background: var(--card); border: 4px solid var(--ink); border-radius: 20px; box-shadow: 6px 6px 0 var(--ink); padding: 22px 18px; text-align: center; display: flex; flex-direction: column; gap: 12px; }
+.price .value { font-family: var(--font-display); font-size: 64px; line-height: 1; }
+.price .value small { font-size: 24px; }
+.timer { display: flex; justify-content: center; gap: 8px; }
+.timer div { background: var(--ink); color: #fff; border-radius: 10px; padding: 6px 10px; min-width: 64px; }
+.timer b { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 400; font-variant-numeric: tabular-nums; }
+.timer span { font-size: 11px; letter-spacing: 1px; font-weight: 800; }
+
+details { background: var(--card); border: var(--line); border-radius: 14px; box-shadow: var(--pop); padding: 12px 14px; }
+details + details { margin-top: 12px; }
+summary { cursor: pointer; font-weight: 800; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
+summary::after { content: "+"; font-family: var(--font-display); font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { margin-top: 8px; color: var(--muted); }
+
+.series { display: flex; flex-direction: column; gap: 10px; }
+.serie { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--card); border: 2.5px solid var(--ink); border-radius: 12px; padding: 10px 12px; }
+.serie b { display: block; }
+.serie span { font-size: 13px; color: var(--muted); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.chip { font-weight: 800; font-size: 13px; text-decoration: none; padding: 5px 10px; border: 2px solid var(--ink); border-radius: 999px; background: var(--paper); }
+footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px 18px 40px; }
+[hidden] { display: none !important; }
+/* CHECKOUT MODAL */
+.checkout-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 19, 31, 0.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+.checkout-modal-backdrop.open {
+  display: flex;
+}
+.checkout-modal {
+  background: #ffffff;
+  border: 4px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 6px 6px 0 var(--ink);
+  max-width: 440px;
+  width: 100%;
+  padding: 24px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: checkoutPop .2s cubic-bezier(.175,.885,.32,1.275);
+}
+@keyframes checkoutPop {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.checkout-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  font-weight: 800;
+  cursor: pointer;
+  color: var(--ink);
+  line-height: 1;
+}
+.checkout-header {
+  text-align: center;
+}
+.checkout-header h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.checkout-badge-mp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  background: #E3F6F4;
+  color: #0c6b68;
+  border: 1.5px solid var(--ink);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.checkout-summary {
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-summary-info {
+  display: flex;
+  flex-direction: column;
+}
+.checkout-summary-title {
+  font-weight: 800;
+  font-size: 15px;
+}
+.checkout-summary-method {
+  font-size: 12px;
+  color: var(--teal);
+  font-weight: 700;
+}
+.checkout-summary-val {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--cta);
+}
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.checkout-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.checkout-group label {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.checkout-input {
+  width: 100%;
+  padding: 11px 13px;
+  border: 2.5px solid var(--ink);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+.checkout-input:focus {
+  border-color: var(--teal);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.checkout-submit {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background: var(--cta);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 20px;
+  padding: 14px;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .1s, box-shadow .1s;
+  margin-top: 4px;
+}
+.checkout-submit:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.checkout-submit:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.checkout-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+.checkout-err {
+  color: #d90429;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  display: none;
+}
+.pix-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.pix-qr-container {
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pix-qr-container img {
+  width: 190px;
+  height: 190px;
+  object-fit: contain;
+}
+.pix-timer {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--muted);
+  background: #ffe3ec;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+.pix-copia-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pix-copia-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 11px;
+  font-family: monospace;
+  padding: 8px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: #f7f7f7;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pix-copy-action {
+  background: var(--teal);
+  color: #fff;
+  border: 2.5px solid var(--ink);
+  border-radius: 10px;
+  padding: 11px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform .1s;
+}
+.pix-copy-action:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.pix-copy-action:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.pix-status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  background: #F0FFF4;
+  border: 1.5px solid #20A5A0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.pix-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+.pix-demo-banner {
+  background: #FFF3C4;
+  border: 2px dashed var(--ink);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  width: 100%;
+  box-sizing: border-box;
+}
+.pix-demo-btn {
+  background: #20A5A0;
+  color: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+.pix-success-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+.pix-success-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #7BD389;
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #fff;
+}
+.pix-success-step h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  margin: 0;
+}
+.pix-success-step p {
+  font-size: 15px;
+  color: var(--muted);
+}
+.pix-access-btn {
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: #20A5A0;
+  color: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  padding: 13px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  box-shadow: 4px 4px 0 var(--ink);
+  box-sizing: border-box;
+}
+#nl-badge-frame, iframe[title*="Netlify"], [id*="nl-badge"], [id*="netlify"], .nl-badge { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover, .btn:active { transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="banner" id="banner">Preço de lançamento: <b>R$ 9,90</b></div>
+
+<main class="wrap">
+
+  <!-- HERÓI -->
+  <section class="stack" style="padding-top:26px">
+    <span class="eyebrow">Curso em Vídeo Aulas · Versão para Computador</span>
+    <h1>Série Animada do Zero</h1>
+    <p class="sub">Mais de 1 Milhão de Views. <em>Audiência e engajamento logo no 1º episódio.</em></p>
+    <p class="lead">O método validado para criar séries animadas virais em que o público vota no próximo episódio, usando o app do Claude no computador e o ElevenLabs. Sem saber desenhar e sem computador potente.</p>
+    <a class="btn checkout" href="#checkout">Quero começar por R$ 9,90</a>
+    <div class="badges"><span>Acesso imediato</span><span>Apenas Pix</span><span>Garantia de 7 dias</span></div>
+    <div class="covers">
+      <figure style="margin:0"><img src="/mirror/serieanimadadozero.netlify.app/img/capa_nova_2.jpg" alt="Capa do Episódio 1 de Lucas e os Cachorrinhos, com 1,8 milhão de visualizações" width="390" height="692" style="width:100%;aspect-ratio:9/14;object-fit:cover"><figcaption class="note" style="margin-top:6px;font-weight:800">Lucas e os Cachorrinhos · EP 1</figcaption></figure>
+      <figure style="margin:0"><img src="/mirror/serieanimadadozero.netlify.app/img/capa_nova_3.jpg" alt="Capa do Episódio 1 de Lucas, com 585 mil visualizações" width="390" height="692" style="width:100%;aspect-ratio:9/14;object-fit:cover"><figcaption class="note" style="margin-top:6px;font-weight:800">Lucas · EP 1</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- VSL / VÍDEO -->
+  <section class="stack">
+    <span class="eyebrow">Assista ao Vídeo</span>
+    <h2>Veja como funciona o método na prática</h2>
+    <p>Assista ao vídeo abaixo e veja como criar séries animadas virais com inteligência artificial.</p>
+    <div class="video"><video src="/mirror/serieanimadadozero.netlify.app/video/vsl.mp4" poster="/mirror/serieanimadadozero.netlify.app/img/vsl_poster.jpg" controls playsinline preload="metadata"></video></div>
+  </section>
+
+  <!-- CASO REAL -->
+  <section class="stack">
+    <span class="eyebrow">O caso real</span>
+    <h2>Mais de 1 Milhão de Views nas Séries</h2>
+    <div class="stats">
+      <div class="stat"><b>+1,8 mi</b><span>visualizações no Episódio 1 de Lucas e os Cachorrinhos</span></div>
+      <div class="stat"><b>+1 milhão</b><span>de visualizações somadas nas séries</span></div>
+      <div class="stat"><b>585 mil</b><span>visualizações no episódio do Lucas</span></div>
+      <div class="stat"><b>+24 mil</b><span>seguidores gerados aplicando o método</span></div>
+    </div>
+    <p class="note">Resultados reais de séries criadas com este método. Vídeos alcançando mais de 1 milhão de visualizações organicamente no TikTok e Instagram.</p>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="stack">
+    <span class="eyebrow">Os episódios</span>
+    <h2>O público escolheu, a série andou</h2>
+    <p class="note">Arraste para o lado. As capas e as visualizações são do Instagram.</p>
+    <div class="gallery" tabindex="0" aria-label="Capas dos episódios">
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/capa_nova_1.jpg" alt="Karen ou Biel? · EP 1" width="390" height="692"><figcaption>Karen ou Biel? · EP 1</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/capa_nova_2.jpg" alt="Lucas e os Cachorrinhos · 1,8 mi views" width="390" height="692"><figcaption>Lucas e os Cachorrinhos · 1,8 mi</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/capa_nova_3.jpg" alt="Lucas · 585 mil views" width="390" height="692"><figcaption>Lucas · 585 mil views</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep1.jpg" alt="EP 1 · Viúva com gêmeos e R$ 0" width="390" height="692"><figcaption>EP 1 · Viúva com gêmeos e R$ 0</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep2.jpg" alt="EP 2 · Esgotou em 15 minutos" width="390" height="692"><figcaption>EP 2 · Esgotou em 15 minutos</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep3.jpg" alt="EP 3 · A fiscalização chegou" width="390" height="692"><figcaption>EP 3 · A fiscalização chegou</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep4.jpg" alt="EP 4 · A sogra denunciou ela" width="390" height="692"><figcaption>EP 4 · A sogra denunciou ela</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep5.jpg" alt="EP 5 · A sogra não tem licença: 446 mil views" width="390" height="692"><figcaption>EP 5 · A sogra não tem licença: 446 mil views</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/med_ep6.jpg" alt="EP 6 · Vocês bateram a meta!" width="390" height="692"><figcaption>EP 6 · Vocês bateram a meta!</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/efe_ep1.jpg" alt="Efetiva ou Rua · EP 1: 389 mil views" width="390" height="692"><figcaption>Efetiva ou Rua · EP 1: 389 mil views</figcaption></figure>
+      <figure><img src="/mirror/serieanimadadozero.netlify.app/img/md_ep1.jpg" alt="Modo Difícil · EP 1: 54 mil views" width="390" height="692"><figcaption>Modo Difícil · EP 1: 54 mil views</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- PRÉVIA DO CURSO -->
+  <section class="stack">
+    <span class="eyebrow">Por dentro das aulas</span>
+    <h2>Vídeo aulas práticas, prompts prontos para copiar</h2>
+    <div class="pages">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-01.q16p67.jpg" alt="Módulo do curso em vídeo aula com prompts prontos">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-02.q16p67.jpg" alt="Sumário das vídeo aulas">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-06.q16p67.jpg" alt="Módulo na prática com prompt">
+      <img src="/mirror/serieanimadadozero.netlify.app/img/pg-25.q16p67.jpg" alt="Estudo de caso nas aulas">
+    </div>
+  </section>
+
+  <!-- MÓDULOS -->
+  <section class="stack">
+    <span class="eyebrow">O que você aprende</span>
+    <h2>11 módulos, na ordem em que você usa</h2>
+    <ul class="mods">
+      <li><small>PASSO 0</small>Preparando o computador</li>
+      <li><small>MÓDULO 1</small>A fórmula das séries "você decide"</li>
+      <li><small>MÓDULO 2</small>Achando 3 perfis em alta</li>
+      <li><small>MÓDULO 3</small>Coletando o material</li>
+      <li><small>MÓDULO 4</small>Extraindo a fórmula com o Claude</li>
+      <li><small>MÓDULO 5</small>Criando a série e o perfil do zero</li>
+      <li><small>MÓDULO 6</small>Por que 2D</li>
+      <li><small>MÓDULO 7</small>Vozes no ElevenLabs</li>
+      <li><small>MÓDULO 8</small>Roteiro e áudio do episódio</li>
+      <li><small>MÓDULO 9</small>Animação com o Claude</li>
+      <li><small>SOCORRO</small>Deu errado, e agora?</li>
+      <li><small>MÓDULO 10</small>Capa, legenda e postagem</li>
+      <li><small>MÓDULO 11</small>Comentários viram episódios</li>
+      <li><small>CASO REAL</small>A Mãe em Dobro por dentro</li>
+    </ul>
+  </section>
+
+  <!-- MATERIAL À PARTE -->
+  <section class="stack">
+    <div class="bonus">
+      <span class="eyebrow">Extra opcional no checkout · R$ 9,90</span>
+      <h3>50 Ideias de Séries para Fazer Sucesso</h3>
+      <p>50 séries prontas para animar, cada uma com protagonista, conflito, gancho do Episódio 1 e a primeira votação, em 10 temas. Para quem quer pular a parte mais difícil e começar hoje.</p>
+      <p class="note" style="margin:0"><b>Não está incluído no curso.</b> Você pode adicionar na hora do pagamento, por mais R$ 9,90.</p>
+    </div>
+  </section>
+
+  <!-- QUEM CRIOU -->
+  <section class="stack">
+    <span class="eyebrow">Quem está por trás</span>
+    <div class="author">
+      <div style="width:110px;height:110px;border:var(--line);border-radius:18px;background:#FFCF3D;box-shadow:var(--pop);display:grid;place-items:center;font-size:46px;">🎬</div>
+      <div class="stack" style="gap:8px">
+        <h3>Caio</h3>
+        <p>Criador de séries animadas que acumulam mais de 1 milhão de visualizações no Instagram e TikTok. Este curso em vídeo aulas mostra o processo exato e validado que eu uso, com os prompts prontos de verdade.</p>
+        <a class="chip" style="align-self:flex-start" href="https://www.instagram.com/caio.deferias" target="_blank" rel="noopener">@caio.deferias</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACESSO -->
+  <section class="stack">
+    <span class="eyebrow">Acesso imediato</span>
+    <h2>O que chega no seu e-mail</h2>
+    <div class="card">
+      <ul class="checks">
+        <li>Curso completo em vídeo aulas práticas, com os 11 módulos passo a passo</li>
+        <li>Kit de prompts prontos para copiar e colar</li>
+        <li>Estudos de caso reais de séries com mais de 1 milhão de visualizações</li>
+        <li>Seção "Deu errado, e agora?" com prompts de correção</li>
+        <li>Checklists de criação e de postagem</li>
+        <li>Acesso a todas as aulas gravadas na tela</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PREÇO -->
+  <section id="comprar">
+    <div class="price">
+      <span class="eyebrow" style="align-self:center">Preço de lançamento</span>
+      <div class="value">R$ 9<small>,90</small></div>
+      <p>Pagamento único no Pix. Acesso imediato enviado para seu e-mail.</p>
+
+      <div class="timer" id="timer" hidden>
+        <div><b data-u="h">00</b><span>HORAS</span></div><div><b data-u="m">00</b><span>MIN</span></div><div><b data-u="s">00</b><span>SEG</span></div>
+      </div>
+      <p class="note" id="timerNote" hidden></p>
+      <a class="btn checkout" href="#checkout">Comprar agora</a>
+      <p class="note">Garantia de 7 dias: se não gostar, devolução garantida.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="stack">
+    <span class="eyebrow">Perguntas frequentes</span>
+    <details><summary>Preciso saber desenhar ou animar?</summary><p>Não. Os personagens e a animação 2D são feitos pelo Claude a partir dos prompts ensinados nas vídeo aulas.</p></details>
+    <details><summary>Nunca usei o Claude. Consigo?</summary><p>Consegue. As vídeo aulas mostram o passo a passo na tela, e todo prompt já vem pronto: você só precisa copiar e colar.</p></details>
+    <details><summary>Funciona com o Claude gratuito?</summary><p>Não. O curso precisa do Claude Pro ou de um plano superior (Max). O plano gratuito não tem o navegador do app, que o Claude usa para pesquisar os perfis, abrir os vídeos e ler os comentários, e também não dá conta de gerar as animações.</p></details>
+    <details><summary>Quanto vou gastar com as ferramentas?</summary><p>O mínimo é o Claude Pro (cerca de R$ 110 por mês), porque o plano gratuito não tem o navegador do app. No ElevenLabs dá para testar as vozes no plano gratuito, e para postar o recomendado é o Starter (cerca de R$ 34 por mês).</p></details>
+    <details><summary>Dá para fazer pelo celular?</summary><p>Por enquanto o curso é para computador. O método usa o app do Claude no computador, com um navegador próprio que pesquisa perfis, abre vídeos e lê comentários sozinho. Postar e acompanhar a série você faz pelo celular normalmente. Estou estudando as possibilidades de uma versão do curso feita toda pelo celular.</p></details>
+    <details><summary>Que computador eu preciso?</summary><p>Qualquer computador com Windows ou Mac em que dê para instalar o app do Claude. Não precisa ser potente nem ter placa de vídeo: quem gera a animação é o Claude.</p></details>
+    <details><summary>Posso usar os mesmos personagens na minha série?</summary><p>O curso ensina a fórmula exata para criar a sua própria série, com seu personagem, nome e dinâmica originais.</p></details>
+    <details><summary>Como recebo o acesso?</summary><p>Assim que o Pix for confirmado (leva poucos segundos), você recebe imediatamente no seu e-mail o link para acessar todas as vídeo aulas gravadas e os materiais.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia total para pedir a devolução integral do valor.</p></details>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="stack" style="text-align:center">
+    <h2>A sua série começa com uma ideia</h2>
+    <p class="lead">E o público decide o resto.</p>
+    <a class="btn checkout" href="#checkout">Começar por R$ 9,90</a>
+    <div class="badges"><span>Acesso imediato</span><span>Apenas Pix</span><span>Garantia de 7 dias</span></div>
+  </section>
+
+  <!-- SÉRIES -->
+  <section class="stack">
+    <span class="eyebrow">Assista às séries</span>
+    <div class="series">
+      <div class="serie"><div><b>Lucas e os Cachorrinhos</b><span>@caio.deferias</span></div><div class="chips"><a class="chip" href="https://www.instagram.com/caio.deferias" target="_blank" rel="noopener">Instagram</a></div></div>
+      <div class="serie"><div><b>Karen ou Biel?</b><span>@caio.deferias</span></div><div class="chips"><a class="chip" href="https://www.instagram.com/caio.deferias" target="_blank" rel="noopener">Instagram</a></div></div>
+      <div class="serie"><div><b>Lucas</b><span>@caio.deferias</span></div><div class="chips"><a class="chip" href="https://www.instagram.com/caio.deferias" target="_blank" rel="noopener">Instagram</a></div></div>
+    </div>
+  </section>
+</main>
+
+<!-- CHECKOUT MODAL -->
+<div class="checkout-modal-backdrop" id="checkoutModal">
+  <div class="checkout-modal" role="dialog" aria-modal="true">
+    <button class="checkout-close" id="closeCheckoutBtn" aria-label="Fechar">&times;</button>
+    
+    <div class="checkout-header">
+      <h3>Finalizar Inscrição</h3>
+      <div class="checkout-badge-mp">
+        <span>🛡️ Mercado Pago · Pix Instantâneo</span>
+      </div>
+    </div>
+
+    <div class="checkout-summary">
+      <div class="checkout-summary-info">
+        <span class="checkout-summary-title">Série Animada do Zero</span>
+        <span class="checkout-summary-method">⚡ Pagamento via Pix</span>
+      </div>
+      <div class="checkout-summary-val">R$ 9,90</div>
+    </div>
+
+    <!-- PASSO 1: FORMULÁRIO -->
+    <div id="checkoutStepForm">
+      <form class="checkout-form" id="checkoutForm">
+        <div class="checkout-group">
+          <label for="buyerName">Seu Nome Completo</label>
+          <input type="text" id="buyerName" class="checkout-input" placeholder="Ex: Gabriel Silva" required>
+        </div>
+
+        <div class="checkout-group">
+          <label for="buyerEmail">Seu Melhor E-mail</label>
+          <input type="email" id="buyerEmail" class="checkout-input" placeholder="Ex: seuemail@gmail.com" required>
+          <span style="font-size:11px;color:var(--muted)">O acesso e materiais serão enviados aqui.</span>
+        </div>
+
+        <div class="checkout-group">
+          <label for="buyerCpf">CPF (exigido para emissão do Pix)</label>
+          <input type="text" id="buyerCpf" class="checkout-input" placeholder="000.000.000-00" maxlength="14" required>
+        </div>
+
+        <div class="checkout-err" id="checkoutError"></div>
+
+        <button type="submit" class="checkout-submit" id="submitPixBtn">
+          Gerar Pix de R$ 9,90
+        </button>
+      </form>
+    </div>
+
+    <!-- PASSO 2: QR CODE E COPIA E COLA -->
+    <div id="checkoutStepPix" class="pix-step" style="display:none;">
+      <span class="eyebrow" style="align-self:center">Pague com Pix</span>
+      <p style="font-size:14px;color:var(--muted)">Abra o app do seu banco e escaneie o QR Code abaixo:</p>
+      
+      <div class="pix-qr-container">
+        <img id="pixQrImg" src="" alt="QR Code Pix">
+      </div>
+
+      <div class="pix-timer" id="pixCountdown">Expira em 15:00</div>
+
+      <div class="pix-copia-wrapper">
+        <input type="text" id="pixCodeText" class="pix-copia-input" readonly>
+        <button type="button" class="pix-copy-action" id="copyPixBtn">📋 Copiar Código Pix</button>
+      </div>
+
+      <div class="pix-status-indicator">
+        <div class="pix-pulse-dot"></div>
+        <span id="pixStatusText">Aguardando confirmação do pagamento...</span>
+      </div>
+
+      <!-- Banner de Demonstração caso o token não esteja configurado ainda -->
+      <div id="demoSimulatorBox" class="pix-demo-banner" style="display:none;">
+        <div>🧪 <b>Modo Demonstração:</b> Mercado Pago Access Token não inserido.</div>
+        <button type="button" class="pix-demo-btn" id="simulateApproveBtn">Simular Pagamento Aprovado</button>
+      </div>
+    </div>
+
+    <!-- PASSO 3: SUCESSO -->
+    <div id="checkoutStepSuccess" class="pix-success-step" style="display:none;">
+      <div class="pix-success-badge">✓</div>
+      <h3>Pagamento Confirmado!</h3>
+      <p style="font-size:15px;color:var(--muted)">O seu Pix de <b>R$ 9,90</b> foi compensado com sucesso!</p>
+      
+      <div style="background:#FFF3C4;border:2px solid var(--ink);border-radius:12px;padding:14px;font-size:14px;line-height:1.4;width:100%;box-sizing:border-box;">
+        ✉️ <b>Tutorial enviado para o seu e-mail:</b><br>
+        <span id="successEmailDisplay" style="color:var(--ink);font-weight:800;">seu email</span>
+      </div>
+
+      <div style="font-size:14px;color:var(--muted);font-weight:700;" id="redirectCountdownText">
+        Redirecionando para o tutorial em <span id="redirectSeconds" style="color:var(--cta);font-size:18px;">5</span>s...
+      </div>
+
+      <a href="#" id="accessTutorialDirectBtn" target="_blank" class="pix-access-btn" style="text-decoration:none;display:block;">
+        👉 Acessar Tutorial Agora
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL CONFIGURAÇÃO MERCADO PAGO -->
+<div class="checkout-modal-backdrop" id="configModal">
+  <div class="checkout-modal" role="dialog" aria-modal="true" style="max-width:480px">
+    <button class="checkout-close" id="closeConfigBtn" aria-label="Fechar">&times;</button>
+    <div class="checkout-header">
+      <h3>Configurar Mercado Pago</h3>
+      <p style="font-size:13px;color:var(--muted)">Insira seu Access Token do Mercado Pago para receber pagamentos Pix reais diretamente na sua conta.</p>
+    </div>
+
+    <div style="background:#f4f9f8;border:2px solid var(--teal);border-radius:12px;padding:12px;font-size:13px;line-height:1.4">
+      <b>Como pegar seu Access Token:</b><br>
+      1. Acesse o <b>Painel Mercado Pago Developers</b>.<br>
+      2. Vá em <b>Suas integrações</b> &gt; selecione sua aplicação.<br>
+      3. Em <b>Credenciais de Produção</b> (ou Teste), copie o <b>Access Token</b> (começa com <code>APP_USR-</code> ou <code>TEST-</code>).
+    </div>
+
+    <div class="checkout-group">
+      <label for="mpTokenInput">Access Token do Mercado Pago</label>
+      <input type="password" id="mpTokenInput" class="checkout-input" placeholder="APP_USR-xxxxxx...">
+      <span id="configTokenStatus" style="font-size:12px;font-weight:700;color:var(--teal)"></span>
+    </div>
+
+    <div class="checkout-group">
+      <label for="tutorialUrlInput">Link de Acesso ao Tutorial / Material</label>
+      <input type="url" id="tutorialUrlInput" class="checkout-input" placeholder="https://drive.google.com/...">
+    </div>
+
+    <button type="button" class="checkout-submit" id="saveConfigBtn">Salvar Configurações</button>
+  </div>
+</div>
+
+<footer>
+  Série Animada do Zero · por <a href="https://www.instagram.com/caio.deferias" target="_blank" rel="noopener" style="color:inherit;font-weight:800;text-decoration:underline;">@caio.deferias</a>
+  <p style="margin-top:10px">
+    <button id="openConfigBtn" style="background:none;border:none;cursor:pointer;font-size:12px;color:var(--muted);text-decoration:underline;">⚙️ Configurar Mercado Pago (API)</button>
+  </p>
+</footer>
+
+<script>
+(function () {
+  // Preço de lançamento com prazo real. Deixe null para esconder o cronômetro.
+  // Exemplo: var FIM = "2026-11-16T20:00:00-03:00", DEPOIS = "R$ 29,90";
+  var FIM = null, DEPOIS = "R$ 29,90";
+  if (!FIM) return;
+  var end = new Date(FIM).getTime();
+  var dt = new Date(FIM);
+  var data = String(dt.getDate()).padStart(2, "0") + "/" + String(dt.getMonth() + 1).padStart(2, "0");
+  document.getElementById("banner").innerHTML = "Preço de lançamento <b>R$ 9,90</b> até " + data + " às 20h. Depois, " + DEPOIS + ".";
+  var timer = document.getElementById("timer"), note = document.getElementById("timerNote");
+  timer.hidden = false; note.hidden = false; note.textContent = "para o preço subir para " + DEPOIS;
+  function tick() {
+    var s = Math.max(0, Math.floor((end - Date.now()) / 1000));
+    var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60;
+    timer.querySelector('[data-u="h"]').textContent = String(h).padStart(2, "0");
+    timer.querySelector('[data-u="m"]').textContent = String(m).padStart(2, "0");
+    timer.querySelector('[data-u="s"]').textContent = String(ss).padStart(2, "0");
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+<script>/* VibeCloner — anti-preloader */(function(){
+  var DELAY=4000;
+  function vw(){return window.innerWidth||document.documentElement.clientWidth||0;}
+  function vh(){return window.innerHeight||document.documentElement.clientHeight||0;}
+  function n(v){return parseFloat(v)||0;}
+  function solid(cs){return cs.backgroundColor&&cs.backgroundColor!=='rgba(0, 0, 0, 0)'&&cs.backgroundColor!=='transparent';}
+  // Detecta overlays sólidos que cobrem a tela toda a partir do canto (cortinas
+  // de transição/preloader controladas por JS que não rodou).
+  function isCover(el){var cs=getComputedStyle(el);
+    if(cs.display==='none'||cs.visibility==='hidden'||n(cs.opacity||'1')<0.1)return false;
+    if(cs.position!=='fixed'&&cs.position!=='absolute')return false;
+    if(!solid(cs))return false;
+    if(vw()<10||vh()<10)return false;
+    var r=el.getBoundingClientRect();
+    if(r.width<vw()*0.9||r.height<vh()*0.9)return false;
+    if(r.top>5||r.left>5)return false;
+    // NÃO exclui overlays com canvas/svg/img dentro: preloaders/cortinas
+    // frequentemente têm logo ou animação (Rive) no meio. z-index alto + tela
+    // cheia a partir do canto = cortina, não conteúdo.
+    return n(cs.zIndex||'0')>=2;}
+  function covers(){return [].slice.call(document.querySelectorAll('body *')).filter(isCover);}
+  function reveal(){try{
+    var de=document.documentElement,b=document.body;
+    de.classList.remove('lenis-stopped');
+    [de,b].forEach(function(el){if(el){el.style.overflow='visible';el.style.height='auto';}});
+    covers().forEach(function(el){el.style.display='none';});
+    document.querySelectorAll('[style]').forEach(function(el){var s=el.style;
+      if(s.opacity!==''&&n(s.opacity)<0.05)s.opacity='1';
+      if(s.visibility==='hidden')s.visibility='visible';});
+    window.scrollTo(0,0);
+  }catch(e){}}
+  function check(){if(covers().length){reveal();console.log('[VibeCloner] Preloader/cortina travada — conteudo revelado (tecla R para repetir).');}}
+  function arm(){setTimeout(check,DELAY);}
+  if(document.readyState==='complete')arm();else window.addEventListener('load',arm);
+  window.addEventListener('keydown',function(e){var t=(e.target&&e.target.tagName)||'';if((e.key==='r'||e.key==='R')&&!/input|textarea/i.test(t))reveal();});
+})();</script>
+<script>
+(function () {
+  var modal = document.getElementById("checkoutModal");
+  var configModal = document.getElementById("configModal");
+  var stepForm = document.getElementById("checkoutStepForm");
+  var stepPix = document.getElementById("checkoutStepPix");
+  var stepSuccess = document.getElementById("checkoutStepSuccess");
+  var checkoutError = document.getElementById("checkoutError");
+  var submitBtn = document.getElementById("submitPixBtn");
+  var copyPixBtn = document.getElementById("copyPixBtn");
+  var pixCodeText = document.getElementById("pixCodeText");
+  var pixQrImg = document.getElementById("pixQrImg");
+  var pixStatusText = document.getElementById("pixStatusText");
+  var demoSimulatorBox = document.getElementById("demoSimulatorBox");
+  var simulateApproveBtn = document.getElementById("simulateApproveBtn");
+  var successEmailDisplay = document.getElementById("successEmailDisplay");
+  
+  var activePaymentId = null;
+  var pollInterval = null;
+  var countdownInterval = null;
+
+  // Mask CPF: 000.000.000-00
+  var cpfInput = document.getElementById("buyerCpf");
+  cpfInput.addEventListener("input", function(e) {
+    var v = e.target.value.replace(/\D/g, "").slice(0, 11);
+    if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
+    else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
+    else if (v.length > 3) v = v.replace(/(\d{3})(\d{1,3})/, "$1.$2");
+    e.target.value = v;
+  });
+
+  function openCheckout() {
+    stepForm.style.display = "block";
+    stepPix.style.display = "none";
+    stepSuccess.style.display = "none";
+    checkoutError.style.display = "none";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Gerar Pix de R$ 9,90";
+    modal.classList.add("open");
+  }
+
+  function closeCheckout() {
+    modal.classList.remove("open");
+    if (pollInterval) clearInterval(pollInterval);
+    if (countdownInterval) clearInterval(countdownInterval);
+  }
+
+  // Intercept all .checkout buttons
+  document.querySelectorAll(".checkout").forEach(function(btn) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      openCheckout();
+    });
+  });
+
+  document.getElementById("closeCheckoutBtn").addEventListener("click", closeCheckout);
+  modal.addEventListener("click", function(e) {
+    if (e.target === modal) closeCheckout();
+  });
+
+  // Config modal
+  document.getElementById("openConfigBtn").addEventListener("click", function() {
+    fetch("/api/config")
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var statusEl = document.getElementById("configTokenStatus");
+        if (data.has_token) {
+          statusEl.textContent = "✓ Token configurado (" + data.token_preview + ")";
+        } else {
+          statusEl.textContent = "⚠️ Nenhum token configurado (em modo simulação).";
+        }
+        var tutInput = document.getElementById("tutorialUrlInput");
+        if (tutInput && data.tutorial_url) {
+          tutInput.value = data.tutorial_url;
+        }
+        configModal.classList.add("open");
+      });
+  });
+
+  document.getElementById("closeConfigBtn").addEventListener("click", function() {
+    configModal.classList.remove("open");
+  });
+
+  document.getElementById("saveConfigBtn").addEventListener("click", function() {
+    var token = document.getElementById("mpTokenInput").value.trim();
+    var tutorialUrl = document.getElementById("tutorialUrlInput").value.trim();
+    var payload = {};
+    if (token) payload.mercado_pago_access_token = token;
+    if (tutorialUrl) payload.tutorial_url = tutorialUrl;
+    fetch("/api/config", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      alert("Configurações salvas com sucesso!");
+      configModal.classList.remove("open");
+    })
+    .catch(function(err) {
+      alert("Erro ao salvar: " + err);
+    });
+  });
+
+  // Copy Pix Code
+  copyPixBtn.addEventListener("click", function() {
+    if (!pixCodeText.value) return;
+    navigator.clipboard.writeText(pixCodeText.value).then(function() {
+      var orig = copyPixBtn.textContent;
+      copyPixBtn.textContent = "✓ Código Copiado!";
+      copyPixBtn.style.background = "#7BD389";
+      setTimeout(function() {
+        copyPixBtn.textContent = orig;
+        copyPixBtn.style.background = "var(--teal)";
+      }, 2500);
+    }).catch(function() {
+      pixCodeText.select();
+      document.execCommand("copy");
+      alert("Código copiado!");
+    });
+  });
+
+  // Simulate approval in demo mode
+  simulateApproveBtn.addEventListener("click", function() {
+    if (!activePaymentId) return;
+    fetch("/api/pix/simulate-approve", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: activePaymentId })
+    });
+  });
+
+  // Countdown timer
+  function startCountdown(durationSec) {
+    if (countdownInterval) clearInterval(countdownInterval);
+    var remaining = durationSec;
+    var el = document.getElementById("pixCountdown");
+    function update() {
+      var m = Math.floor(remaining / 60);
+      var s = remaining % 60;
+      el.textContent = "Expira em " + String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+      if (remaining <= 0) {
+        clearInterval(countdownInterval);
+        el.textContent = "Código expirado. Gere um novo Pix.";
+      }
+      remaining--;
+    }
+    update();
+    countdownInterval = setInterval(update, 1000);
+  }
+
+  // Poll payment status
+  function startPolling(paymentId) {
+    if (pollInterval) clearInterval(pollInterval);
+    activePaymentId = paymentId;
+    pollInterval = setInterval(function() {
+      fetch("/api/pix/status?id=" + encodeURIComponent(paymentId))
+        .then(function(r) { return r.json(); })
+        .then(function(res) {
+          if (res.status === "approved") {
+            clearInterval(pollInterval);
+            if (countdownInterval) clearInterval(countdownInterval);
+            stepPix.style.display = "none";
+            stepSuccess.style.display = "flex";
+
+            var tutorialUrl = res.tutorial_url || "#";
+            var directBtn = document.getElementById("accessTutorialDirectBtn");
+            directBtn.href = tutorialUrl;
+
+            // Countdown to automatic redirect
+            var secLeft = 5;
+            var secEl = document.getElementById("redirectSeconds");
+            var redirTimer = setInterval(function() {
+              secLeft--;
+              if (secEl) secEl.textContent = secLeft;
+              if (secLeft <= 0) {
+                clearInterval(redirTimer);
+                if (tutorialUrl && tutorialUrl !== "#") {
+                  window.location.href = tutorialUrl;
+                }
+              }
+            }, 1000);
+          } else if (res.status === "rejected" || res.status === "cancelled") {
+            clearInterval(pollInterval);
+            if (countdownInterval) clearInterval(countdownInterval);
+            pixStatusText.textContent = "Pagamento " + (res.status === "cancelled" ? "cancelado" : "recusado") + ".";
+            pixStatusText.style.color = "#d90429";
+          }
+        })
+        .catch(function(err) { console.error("Poll error:", err); });
+    }, 2500);
+  }
+
+  // Form Submit
+  document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    checkoutError.style.display = "none";
+    
+    var name = document.getElementById("buyerName").value.trim();
+    var email = document.getElementById("buyerEmail").value.trim();
+    var cpf = document.getElementById("buyerCpf").value.trim();
+
+    if (!name || !email || !cpf) {
+      checkoutError.textContent = "Por favor preencha todos os campos.";
+      checkoutError.style.display = "block";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Gerando Pix...";
+
+    fetch("/api/pix/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name, email: email, cpf: cpf })
+    })
+    .then(function(r) {
+      if (!r.ok) {
+        return r.json().then(function(err) { throw err; });
+      }
+      return r.json();
+    })
+    .then(function(data) {
+      stepForm.style.display = "none";
+      stepPix.style.display = "flex";
+      
+      successEmailDisplay.textContent = email;
+      pixCodeText.value = data.qr_code || "";
+
+      if (data.is_svg) {
+        pixQrImg.src = "data:image/svg+xml;base64," + data.qr_code_base64;
+      } else {
+        pixQrImg.src = "data:image/png;base64," + data.qr_code_base64;
+      }
+
+      if (data.demo) {
+        demoSimulatorBox.style.display = "block";
+      } else {
+        demoSimulatorBox.style.display = "none";
+      }
+
+      startCountdown(15 * 60);
+      startPolling(data.payment_id);
+    })
+    .catch(function(err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Gerar Pix de R$ 9,90";
+      checkoutError.textContent = err.error || (err.details && JSON.stringify(err.details)) || "Erro ao gerar Pix. Tente novamente.";
+      checkoutError.style.display = "block";
+    });
+  });
+})();
+</script>
+</body>
+</html>

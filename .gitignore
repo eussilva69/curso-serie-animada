@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+payments_store.json
+.vscode/
+.idea/
