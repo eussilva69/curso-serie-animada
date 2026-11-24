@@ -7,7 +7,7 @@ const sentEmails = new Set();
 function getConfig() {
   const defaults = {
     mercado_pago_access_token: process.env.MERCADO_PAGO_ACCESS_TOKEN || "APP_USR-7458996510149615-110903-8738600b8589a9741d32a85a8040d38b-408387365",
-    product_title: "Série Animada do Zero",
+    product_title: "Faça sua série animada e ganhe com isso",
     smtp_host: process.env.SMTP_HOST || "smtp.gmail.com",
     smtp_port: 465,
     smtp_user: process.env.SMTP_USER || "glcodingweb@gmail.com",
@@ -102,12 +102,16 @@ export default async function handler(req, res) {
     const status = data.status;
     let emailSent = false;
 
-    if (status === 'approved' && !sentEmails.has(paymentId)) {
-      sentEmails.add(paymentId);
-      const buyerEmail = data.payer?.email;
-      const buyerName = `${data.payer?.first_name || ''} ${data.payer?.last_name || ''}`.trim();
-      await sendEmail(buyerEmail, buyerName, config.tutorial_url);
-      emailSent = true;
+    if (status === 'approved') {
+      const buyerEmail = data.payer?.email || data.metadata?.buyer_email;
+      const buyerName = `${data.payer?.first_name || ''} ${data.payer?.last_name || ''}`.trim() || data.metadata?.buyer_name || 'Aluno(a)';
+      const key = `${paymentId}_${buyerEmail}`;
+
+      if (!sentEmails.has(key)) {
+        sentEmails.add(key);
+        await sendEmail(buyerEmail, buyerName, config.tutorial_url);
+        emailSent = true;
+      }
     }
 
     return res.status(200).json({

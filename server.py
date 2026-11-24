@@ -380,13 +380,18 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
                 "transaction_amount": price,
                 "description": title,
                 "payment_method_id": "pix",
+                "notification_url": "https://lucasvideos.vercel.app/api/pix/webhook",
+                "metadata": {
+                    "buyer_email": email,
+                    "buyer_name": name
+                },
                 "payer": {
                     "email": email,
                     "first_name": first_name,
                     "last_name": last_name,
                     "identification": {
                         "type": "CPF",
-                        "number": cpf if len(cpf) == 11 else "00000000000"
+                        "number": cpf if len(cpf) == 11 else "11067115803"
                     }
                 }
             }

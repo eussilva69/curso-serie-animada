@@ -61,13 +61,18 @@ export default async function handler(req, res) {
       transaction_amount: price,
       description: title,
       payment_method_id: 'pix',
+      notification_url: 'https://lucasvideos.vercel.app/api/pix/webhook',
+      metadata: {
+        buyer_email: email,
+        buyer_name: name
+      },
       payer: {
         email: email,
         first_name: firstName,
         last_name: lastName,
         identification: {
           type: 'CPF',
-          number: cpf.length === 11 ? cpf : '00000000000'
+          number: cpf.length === 11 ? cpf : '11067115803'
         }
       }
     };

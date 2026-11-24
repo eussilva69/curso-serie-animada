@@ -641,6 +641,10 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
         <span id="pixStatusText">Aguardando confirmação do pagamento...</span>
       </div>
 
+      <button type="button" id="checkPaymentNowBtn" style="margin-top:14px;background:#20A5A0;color:#ffffff;border:2px solid var(--ink);border-radius:12px;padding:12px 16px;font-size:15px;font-weight:800;cursor:pointer;width:100%;box-shadow:2px 2px 0 var(--ink);display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span>⚡ Já realizei o Pix (Verificar Agora)</span>
+      </button>
+
       <!-- Banner de Demonstração caso o token não esteja configurado ainda -->
       <div id="demoSimulatorBox" class="pix-demo-banner" style="display:none;">
         <div>🧪 <b>Modo Demonstração:</b> Mercado Pago Access Token não inserido.</div>
@@ -765,45 +769,88 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
   }
 
   // Poll payment status
+  var isCheckingStatus = false;
+  function checkPaymentStatus(paymentId, isManual) {
+    if (!paymentId || isCheckingStatus) return;
+    isCheckingStatus = true;
+    if (isManual) {
+      pixStatusText.textContent = "Verificando confirmação do banco...";
+    }
+    fetch("/api/pix/status?id=" + encodeURIComponent(paymentId))
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        isCheckingStatus = false;
+        if (res.status === "approved") {
+          if (pollInterval) clearInterval(pollInterval);
+          if (countdownInterval) clearInterval(countdownInterval);
+          stepPix.style.display = "none";
+          stepSuccess.style.display = "flex";
+
+          var tutorialUrl = res.tutorial_url || "https://youtu.be/xxJby0kUv08";
+          var directBtn = document.getElementById("accessTutorialDirectBtn");
+          if (directBtn) directBtn.href = tutorialUrl;
+
+          // Countdown to automatic redirect
+          var secLeft = 4;
+          var secEl = document.getElementById("redirectSeconds");
+          var redirTimer = setInterval(function() {
+            secLeft--;
+            if (secEl) secEl.textContent = secLeft;
+            if (secLeft <= 0) {
+              clearInterval(redirTimer);
+              if (tutorialUrl && tutorialUrl !== "#") {
+                window.location.href = tutorialUrl;
+              }
+            }
+          }, 1000);
+        } else if (res.status === "rejected" || res.status === "cancelled") {
+          if (pollInterval) clearInterval(pollInterval);
+          if (countdownInterval) clearInterval(countdownInterval);
+          pixStatusText.textContent = "Pagamento " + (res.status === "cancelled" ? "cancelado" : "recusado") + ".";
+          pixStatusText.style.color = "#d90429";
+        } else {
+          if (isManual) {
+            pixStatusText.textContent = "Aguardando confirmação do pagamento...";
+          }
+        }
+      })
+      .catch(function(err) {
+        isCheckingStatus = false;
+        console.error("Poll error:", err);
+      });
+  }
+
   function startPolling(paymentId) {
     if (pollInterval) clearInterval(pollInterval);
     activePaymentId = paymentId;
+    // Check immediately once
+    checkPaymentStatus(paymentId);
+    // Then poll every 2000ms
     pollInterval = setInterval(function() {
-      fetch("/api/pix/status?id=" + encodeURIComponent(paymentId))
-        .then(function(r) { return r.json(); })
-        .then(function(res) {
-          if (res.status === "approved") {
-            clearInterval(pollInterval);
-            if (countdownInterval) clearInterval(countdownInterval);
-            stepPix.style.display = "none";
-            stepSuccess.style.display = "flex";
+      checkPaymentStatus(paymentId);
+    }, 2000);
+  }
 
-            var tutorialUrl = res.tutorial_url || "#";
-            var directBtn = document.getElementById("accessTutorialDirectBtn");
-            directBtn.href = tutorialUrl;
+  // Immediate check when user switches back to browser tab from bank app
+  document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState === "visible" && activePaymentId) {
+      checkPaymentStatus(activePaymentId, true);
+    }
+  });
+  window.addEventListener("focus", function() {
+    if (activePaymentId) {
+      checkPaymentStatus(activePaymentId, true);
+    }
+  });
 
-            // Countdown to automatic redirect
-            var secLeft = 5;
-            var secEl = document.getElementById("redirectSeconds");
-            var redirTimer = setInterval(function() {
-              secLeft--;
-              if (secEl) secEl.textContent = secLeft;
-              if (secLeft <= 0) {
-                clearInterval(redirTimer);
-                if (tutorialUrl && tutorialUrl !== "#") {
-                  window.location.href = tutorialUrl;
-                }
-              }
-            }, 1000);
-          } else if (res.status === "rejected" || res.status === "cancelled") {
-            clearInterval(pollInterval);
-            if (countdownInterval) clearInterval(countdownInterval);
-            pixStatusText.textContent = "Pagamento " + (res.status === "cancelled" ? "cancelado" : "recusado") + ".";
-            pixStatusText.style.color = "#d90429";
-          }
-        })
-        .catch(function(err) { console.error("Poll error:", err); });
-    }, 2500);
+  // Manual verify button
+  var checkBtn = document.getElementById("checkPaymentNowBtn");
+  if (checkBtn) {
+    checkBtn.addEventListener("click", function() {
+      if (activePaymentId) {
+        checkPaymentStatus(activePaymentId, true);
+      }
+    });
   }
 
   // Form Submit
