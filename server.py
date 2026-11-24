@@ -277,8 +277,18 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
                     
                     email_sent = False
                     p_info = payments_store.get(str(payment_id), {})
-                    buyer_email = p_info.get("email") or data.get("payer", {}).get("email")
-                    buyer_name = p_info.get("name") or (data.get("payer", {}).get("first_name", "") + " " + data.get("payer", {}).get("last_name", "")).strip()
+                    metadata = data.get("metadata", {}) or {}
+                    buyer_email = (
+                        metadata.get("buyer_email")
+                        or p_info.get("email")
+                        or data.get("payer", {}).get("email")
+                    )
+                    buyer_name = (
+                        metadata.get("buyer_name")
+                        or p_info.get("name")
+                        or (data.get("payer", {}).get("first_name", "") + " " + data.get("payer", {}).get("last_name", "")).strip()
+                        or "Aluno(a)"
+                    )
 
                     # IF APPROVED: Trigger automatic email sending once
                     if status == "approved":

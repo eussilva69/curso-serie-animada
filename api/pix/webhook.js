@@ -88,6 +88,20 @@ async function sendEmail(buyerEmail, buyerName, tutorialUrl, pdfUrl) {
   }
 }
 
+function extractBuyer(data) {
+  const metaEmail = data.metadata?.buyer_email?.trim();
+  const payerEmail = data.payer?.email?.trim();
+  // Prioriza o e-mail real preenchido pelo aluno no formulário de checkout
+  let email = metaEmail;
+  if (!email || !email.includes('@') || email.includes('XXXXXXXXXXX') || email.includes('mercadopago')) {
+    email = payerEmail;
+  }
+  const metaName = data.metadata?.buyer_name?.trim();
+  const payerName = `${data.payer?.first_name || ''} ${data.payer?.last_name || ''}`.trim();
+  const name = metaName || payerName || 'Aluno(a)';
+  return { email, name };
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -139,13 +153,15 @@ export default async function handler(req, res) {
     console.log(`[Webhook MP] Pagamento ${paymentId} status: ${data.status}`);
 
     if (data.status === 'approved') {
-      const buyerEmail = data.payer?.email || data.metadata?.buyer_email;
-      const buyerName = `${data.payer?.first_name || ''} ${data.payer?.last_name || ''}`.trim() || data.metadata?.buyer_name || 'Aluno(a)';
+      const { email: buyerEmail, name: buyerName } = extractBuyer(data);
+      console.log(`[Webhook MP] Aluno identificado: ${buyerName} <${buyerEmail}>`);
 
       const key = `${paymentId}_${buyerEmail}`;
       if (!sentDeliveries.has(key)) {
-        sentDeliveries.add(key);
-        await sendEmail(buyerEmail, buyerName, config.tutorial_url, config.pdf_url);
+        const sent = await sendEmail(buyerEmail, buyerName, config.tutorial_url, config.pdf_url);
+        if (sent) {
+          sentDeliveries.add(key);
+        }
       }
     }
 
