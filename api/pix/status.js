@@ -48,12 +48,12 @@ async function sendEmail(buyerEmail, buyerName, tutorialUrl, pdfUrl) {
     from: `"${title}" <${config.smtp_user}>`,
     to: buyerEmail,
     subject: `🎉 Seus Acessos Chegaram: ${title} (Vídeo Aula + E-book PDF)`,
-    text: `Olá, ${name}!\n\nSeu pagamento de R$ 9,90 via Pix foi confirmado com sucesso!\n\nAqui estão os seus links de acesso:\n\n1) VÍDEO AULA COMPLETA:\n${finalTutorialUrl}\n\n2) E-BOOK GUIA COMPLETO COM PROMPTS (PDF):\n${finalPdfUrl}\n\nBons estudos!\nEquipe ${title} · @caio.deferias`,
+    text: `Olá, ${name}!\n\nSeu pagamento de R$ 19,90 via Pix foi confirmado com sucesso!\n\nAqui estão os seus links de acesso:\n\n1) VÍDEO AULA COMPLETA:\n${finalTutorialUrl}\n\n2) E-BOOK GUIA COMPLETO COM PROMPTS (PDF):\n${finalPdfUrl}\n\nBons estudos!\nEquipe ${title} · @caio.deferias`,
     html: `
       <div style="font-family: sans-serif; background-color: #FFF7F2; padding: 20px; color: #16131F;">
         <div style="max-width: 540px; margin: 0 auto; background: #fff; border: 3px solid #16131F; border-radius: 18px; padding: 30px 24px;">
           <h1 style="font-size: 24px; margin: 0 0 12px 0;">Parabéns, ${name}! 🎉</h1>
-          <p style="font-size: 16px; line-height: 1.5;">O seu pagamento de <b>R$ 9,90</b> via Pix foi aprovado com sucesso!</p>
+          <p style="font-size: 16px; line-height: 1.5;">O seu pagamento de <b>R$ 19,90</b> via Pix foi aprovado com sucesso!</p>
           <p style="font-size: 15px; color: #555;">Seus 2 entregáveis completos já estão liberados abaixo:</p>
 
           <div style="background: #FFE3EC; border: 2px dashed #FF5D8F; border-radius: 12px; padding: 18px; margin: 20px 0; text-align: center;">

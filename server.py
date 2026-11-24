@@ -23,7 +23,7 @@ def load_config():
         "mercado_pago_access_token": "",
         "mercado_pago_public_key": "",
         "product_title": "Faça sua série animada e ganhe com isso",
-        "product_price": 9.90,
+        "product_price": 19.90,
         "smtp_host": "smtp.gmail.com",
         "smtp_port": 465,
         "smtp_user": "glcodingweb@gmail.com",
@@ -88,7 +88,7 @@ def send_tutorial_email(buyer_email, buyer_name, tutorial_url, pdf_url=None):
     # Plain text version
     text_content = f"""Olá, {display_name}!
 
-O seu pagamento via Pix de R$ 9,90 foi confirmado com sucesso!
+O seu pagamento via Pix de R$ 19,90 foi confirmado com sucesso!
 
 Aqui estão os seus links de acesso aos 2 entregáveis da {title}:
 
@@ -131,7 +131,7 @@ Equipe {title} · @caio.deferias
   <div class="card">
     <span class="badge">Acessos Confirmados</span>
     <h1>Parabéns, {display_name}! 🎉</h1>
-    <p>O seu pagamento de <b>R$ 9,90</b> via Pix foi confirmado instantaneamente.</p>
+    <p>O seu pagamento de <b>R$ 19,90</b> via Pix foi confirmado instantaneamente.</p>
     <p>Seus 2 entregáveis completos já estão liberados abaixo:</p>
     
     <div class="box-video">
@@ -225,8 +225,8 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
             return self.send_json(200, {
                 "has_token": has_token,
                 "token_preview": preview,
-                "product_price": config.get("product_price", 9.90),
-                "product_title": config.get("product_title", "Série Animada do Zero"),
+                "product_price": config.get("product_price", 19.90),
+                "product_title": config.get("product_title", "Faça sua série animada e ganhe com isso"),
                 "tutorial_url": config.get("tutorial_url", "")
             })
 
@@ -355,8 +355,8 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
 
             config = load_config()
             token = config.get("mercado_pago_access_token", "").strip()
-            price = float(config.get("product_price", 9.90))
-            title = config.get("product_title", "Série Animada do Zero")
+            price = float(config.get("product_price", 19.90))
+            title = config.get("product_title", "Faça sua série animada e ganhe com isso")
 
             parts = name.split()
             first_name = parts[0] if parts else "Cliente"
@@ -365,7 +365,7 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
             # Demo Pix if no token
             if not token:
                 fake_id = f"demo_{uuid.uuid4().hex[:10]}"
-                demo_pix_code = f"00020126580014br.gov.bcb.pix0136{uuid.uuid4()}52040000530398654049.905802BR5916SERIE ANIMADA6009SAO PAULO62070503***6304E6A1"
+                demo_pix_code = f"00020126580014br.gov.bcb.pix0136{uuid.uuid4()}520400005303986540419.905802BR5916SERIE ANIMADA6009SAO PAULO62070503***6304E6A1"
                 demo_payments[fake_id] = {
                     "id": fake_id,
                     "status": "pending",
