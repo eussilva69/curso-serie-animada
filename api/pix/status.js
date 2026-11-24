@@ -75,12 +75,12 @@ async function sendEmail(buyerEmail, buyerName, tutorialUrl, pdfUrl) {
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log(`Email enviado com sucesso para ${buyerEmail}`);
-    return true;
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`Email enviado com sucesso para ${buyerEmail}: ${info.messageId}`);
+    return { success: true, messageId: info.messageId };
   } catch (err) {
     console.error('Erro ao enviar email:', err);
-    return false;
+    throw err;
   }
 }
 
@@ -128,18 +128,27 @@ export default async function handler(req, res) {
     const status = data.status;
     let emailSent = false;
 
+    let emailResult = null;
+    let emailError = null;
+
     if (status === 'approved') {
       const { email: buyerEmail, name: buyerName } = extractBuyer(data);
       const key = `${paymentId}_${buyerEmail}`;
 
       if (!sentEmails.has(key)) {
-        const sent = await sendEmail(buyerEmail, buyerName, config.tutorial_url, config.pdf_url);
-        if (sent) {
-          sentEmails.add(key);
-          emailSent = true;
+        try {
+          const sent = await sendEmail(buyerEmail, buyerName, config.tutorial_url, config.pdf_url);
+          emailResult = sent;
+          if (sent && sent.success) {
+            sentEmails.add(key);
+            emailSent = true;
+          }
+        } catch (e) {
+          emailError = e.message;
         }
       } else {
         emailSent = true;
+        emailResult = 'already_sent_in_memory';
       }
     }
 
@@ -149,7 +158,9 @@ export default async function handler(req, res) {
       status_detail: data.status_detail,
       tutorial_url: config.tutorial_url,
       pdf_url: config.pdf_url,
-      email_sent: emailSent
+      email_sent: emailSent,
+      email_result: emailResult,
+      email_error: emailError
     });
   } catch (err) {
     return res.status(200).json({ id: paymentId, status: 'pending', error: err.message });
