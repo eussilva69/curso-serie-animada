@@ -698,6 +698,8 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
   var successEmailDisplay = document.getElementById("successEmailDisplay");
   
   var activePaymentId = null;
+  var activeBuyerEmail = "";
+  var activeBuyerName = "";
   var pollInterval = null;
   var countdownInterval = null;
 
@@ -782,7 +784,10 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
     if (isManual) {
       pixStatusText.textContent = "Verificando confirmação do banco...";
     }
-    fetch("/api/pix/status?id=" + encodeURIComponent(paymentId))
+    var reqUrl = "/api/pix/status?id=" + encodeURIComponent(paymentId);
+    if (activeBuyerEmail) reqUrl += "&email=" + encodeURIComponent(activeBuyerEmail);
+    if (activeBuyerName) reqUrl += "&name=" + encodeURIComponent(activeBuyerName);
+    fetch(reqUrl)
       .then(function(r) { return r.json(); })
       .then(function(res) {
         isCheckingStatus = false;
@@ -834,10 +839,10 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
     activePaymentId = paymentId;
     // Check immediately once
     checkPaymentStatus(paymentId);
-    // Then poll every 2000ms
+    // Then poll every 1500ms
     pollInterval = setInterval(function() {
       checkPaymentStatus(paymentId);
-    }, 2000);
+    }, 1500);
   }
 
   // Immediate check when user switches back to browser tab from bank app
@@ -876,6 +881,9 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
       checkoutError.style.display = "block";
       return;
     }
+
+    activeBuyerName = name;
+    activeBuyerEmail = email;
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Gerando Pix...";

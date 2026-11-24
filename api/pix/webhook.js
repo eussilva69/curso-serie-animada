@@ -40,7 +40,10 @@ async function sendEmail(buyerEmail, buyerName, tutorialUrl, pdfUrl) {
     auth: {
       user: config.smtp_user,
       pass: config.smtp_pass
-    }
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000
   });
 
   const title = config.product_title || "Faça sua série animada e ganhe com isso";
@@ -90,15 +93,20 @@ async function sendEmail(buyerEmail, buyerName, tutorialUrl, pdfUrl) {
 
 function extractBuyer(data) {
   const metaEmail = data.metadata?.buyer_email?.trim();
+  const addlEmail = data.additional_info?.payer?.email?.trim();
   const payerEmail = data.payer?.email?.trim();
-  // Prioriza o e-mail real preenchido pelo aluno no formulário de checkout
-  let email = metaEmail;
-  if (!email || !email.includes('@') || email.includes('XXXXXXXXXXX') || email.includes('mercadopago')) {
-    email = payerEmail;
+
+  // Test candidate emails in strict priority order
+  const candidates = [metaEmail, addlEmail, payerEmail];
+  let email = null;
+  for (const c of candidates) {
+    if (c && c.includes('@') && !c.includes('XXXXXXXXXXX') && !c.includes('mercadopago.com')) {
+      email = c;
+      break;
+    }
   }
-  const metaName = data.metadata?.buyer_name?.trim();
-  const payerName = `${data.payer?.first_name || ''} ${data.payer?.last_name || ''}`.trim();
-  const name = metaName || payerName || 'Aluno(a)';
+
+  const name = data.metadata?.buyer_name?.trim() || `${data.payer?.first_name || ''} ${data.payer?.last_name || ''}`.trim() || 'Aluno(a)';
   return { email, name };
 }
 
