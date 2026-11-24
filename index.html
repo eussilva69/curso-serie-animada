@@ -659,17 +659,23 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
       <p style="font-size:15px;color:var(--muted)">O seu Pix de <b>R$ 9,90</b> foi compensado com sucesso!</p>
       
       <div style="background:#FFF3C4;border:2px solid var(--ink);border-radius:12px;padding:14px;font-size:14px;line-height:1.4;width:100%;box-sizing:border-box;">
-        ✉️ <b>Tutorial enviado para o seu e-mail:</b><br>
+        ✉️ <b>Entregáveis liberados e enviados no seu e-mail:</b><br>
         <span id="successEmailDisplay" style="color:var(--ink);font-weight:800;">seu email</span>
       </div>
 
-      <div style="font-size:14px;color:var(--muted);font-weight:700;" id="redirectCountdownText">
-        Redirecionando para o tutorial em <span id="redirectSeconds" style="color:var(--cta);font-size:18px;">5</span>s...
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;margin-top:12px;">
+        <a href="https://youtu.be/xxJby0kUv08" id="accessTutorialDirectBtn" target="_blank" class="pix-access-btn" style="text-decoration:none;display:block;text-align:center;">
+          🎬 Acessar a Vídeo Aula Agora
+        </a>
+
+        <a href="/Curso_Visual_Historias_Animadas_Parte_1.pdf" id="accessPdfDirectBtn" target="_blank" download="Curso_Visual_Historias_Animadas_Parte_1.pdf" style="text-decoration:none;display:block;text-align:center;background:#20A5A0;color:#ffffff;border:2px solid var(--ink);border-radius:12px;padding:14px;font-weight:800;font-size:16px;box-shadow:3px 3px 0 var(--ink);">
+          📥 Baixar o E-book Completo (PDF)
+        </a>
       </div>
 
-      <a href="https://youtu.be/xxJby0kUv08" id="accessTutorialDirectBtn" target="_blank" class="pix-access-btn" style="text-decoration:none;display:block;">
-        👉 Acessar a Vídeo Aula Agora
-      </a>
+      <div style="font-size:13px;color:var(--muted);font-weight:600;margin-top:10px;" id="redirectCountdownText">
+        Ou assista à aula em <span id="redirectSeconds" style="color:var(--cta);font-size:16px;font-weight:800;">6</span>s...
+      </div>
     </div>
 
   </div>
@@ -787,11 +793,14 @@ footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px
           stepSuccess.style.display = "flex";
 
           var tutorialUrl = res.tutorial_url || "https://youtu.be/xxJby0kUv08";
+          var pdfUrl = res.pdf_url || "/Curso_Visual_Historias_Animadas_Parte_1.pdf";
           var directBtn = document.getElementById("accessTutorialDirectBtn");
           if (directBtn) directBtn.href = tutorialUrl;
+          var pdfBtn = document.getElementById("accessPdfDirectBtn");
+          if (pdfBtn) pdfBtn.href = pdfUrl;
 
           // Countdown to automatic redirect
-          var secLeft = 4;
+          var secLeft = 6;
           var secEl = document.getElementById("redirectSeconds");
           var redirTimer = setInterval(function() {
             secLeft--;

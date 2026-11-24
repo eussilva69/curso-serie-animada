@@ -64,13 +64,15 @@ def save_payments_store(store):
     except Exception as e:
         print("Erro ao salvar payments_store.json:", e)
 
-def send_tutorial_email(buyer_email, buyer_name, tutorial_url):
+def send_tutorial_email(buyer_email, buyer_name, tutorial_url, pdf_url=None):
     config = load_config()
     smtp_host = config.get("smtp_host", "smtp.gmail.com")
     smtp_port = int(config.get("smtp_port", 465))
     smtp_user = config.get("smtp_user", "glcodingweb@gmail.com")
     smtp_pass = config.get("smtp_pass", "pazgfxmesdsdknuk")
-    title = config.get("product_title", "Série Animada do Zero")
+    title = config.get("product_title", "Faça sua série animada e ganhe com isso")
+    final_pdf_url = pdf_url or config.get("pdf_url", "https://lucasvideos.vercel.app/Curso_Visual_Historias_Animadas_Parte_1.pdf")
+    final_tutorial_url = tutorial_url or config.get("tutorial_url", "https://youtu.be/xxJby0kUv08")
 
     if not smtp_user or not smtp_pass or not buyer_email:
         print("[EMAIL] Falha: credenciais SMTP ou e-mail do comprador ausente.")
@@ -79,7 +81,7 @@ def send_tutorial_email(buyer_email, buyer_name, tutorial_url):
     display_name = buyer_name.strip() if buyer_name else "Aluno(a)"
 
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"🎉 Seu Acesso Chegou: {title} (Tutorial Completo)"
+    msg["Subject"] = f"🎉 Seus Acessos Chegaram: {title} (Vídeo Aula + E-book PDF)"
     msg["From"] = f"{title} <{smtp_user}>"
     msg["To"] = buyer_email
 
@@ -88,12 +90,17 @@ def send_tutorial_email(buyer_email, buyer_name, tutorial_url):
 
 O seu pagamento via Pix de R$ 9,90 foi confirmado com sucesso!
 
-Aqui está o seu link de acesso com todas as vídeo aulas e materiais da {title}:
-{tutorial_url}
+Aqui estão os seus links de acesso aos 2 entregáveis da {title}:
+
+1) VÍDEO AULA COMPLETA:
+{final_tutorial_url}
+
+2) E-BOOK GUIA COMPLETO COM PROMPTS (PDF):
+{final_pdf_url}
 
 Conteúdo incluído:
 - Curso Completo em Vídeo Aulas práticas na tela
-- Kit de prompts prontos para copiar e colar
+- E-book completo com Kit de prompts prontos para copiar e colar
 - Método completo: do tema ao episódio no TikTok/Instagram
 
 Qualquer dúvida ou suporte, basta responder a este e-mail.
@@ -109,34 +116,35 @@ Equipe {title} · @caio.deferias
   <meta charset="utf-8">
   <style>
     body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #FFF7F2; margin: 0; padding: 20px; color: #16131F; }}
-    .card {{ max-width: 520px; margin: 0 auto; background: #ffffff; border: 3px solid #16131F; border-radius: 18px; box-shadow: 6px 6px 0px #16131F; padding: 30px 24px; }}
+    .card {{ max-width: 540px; margin: 0 auto; background: #ffffff; border: 3px solid #16131F; border-radius: 18px; box-shadow: 6px 6px 0px #16131F; padding: 30px 24px; }}
     .badge {{ display: inline-block; background: #20A5A0; color: #ffffff; font-weight: 800; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }}
     h1 {{ font-size: 26px; margin: 0 0 12px 0; color: #16131F; line-height: 1.2; }}
     p {{ font-size: 16px; line-height: 1.5; margin: 0 0 16px 0; color: #333333; }}
-    .highlight-box {{ background: #FFE3EC; border: 2px dashed #FF5D8F; border-radius: 12px; padding: 14px; margin: 20px 0; text-align: center; }}
-    .btn {{ display: inline-block; background: #FF5D8F; color: #ffffff !important; text-decoration: none; font-size: 18px; font-weight: 800; padding: 16px 28px; border: 3px solid #16131F; border-radius: 12px; box-shadow: 4px 4px 0px #16131F; margin: 10px 0; }}
+    .box-video {{ background: #FFE3EC; border: 2px dashed #FF5D8F; border-radius: 12px; padding: 18px; margin: 20px 0; text-align: center; }}
+    .box-pdf {{ background: #E8F8F7; border: 2px dashed #20A5A0; border-radius: 12px; padding: 18px; margin: 20px 0; text-align: center; }}
+    .btn-video {{ display: inline-block; background: #FF5D8F; color: #ffffff !important; text-decoration: none; font-size: 17px; font-weight: 800; padding: 14px 24px; border: 2px solid #16131F; border-radius: 10px; margin: 8px 0; }}
+    .btn-pdf {{ display: inline-block; background: #20A5A0; color: #ffffff !important; text-decoration: none; font-size: 17px; font-weight: 800; padding: 14px 24px; border: 2px solid #16131F; border-radius: 10px; margin: 8px 0; }}
     .footer {{ font-size: 13px; color: #777777; margin-top: 24px; border-top: 1px solid #E6E1EE; padding-top: 16px; }}
   </style>
 </head>
 <body>
   <div class="card">
-    <span class="badge">Acesso Confirmado</span>
+    <span class="badge">Acessos Confirmados</span>
     <h1>Parabéns, {display_name}! 🎉</h1>
     <p>O seu pagamento de <b>R$ 9,90</b> via Pix foi confirmado instantaneamente.</p>
-    <p>O seu acesso ao curso completo em vídeo aulas e materiais da <b>{title}</b> já está liberado:</p>
+    <p>Seus 2 entregáveis completos já estão liberados abaixo:</p>
     
-    <div class="highlight-box">
-      <p style="margin-bottom: 8px; font-weight: bold; font-size: 15px;">👇 Clique no botão abaixo para acessar:</p>
-      <a href="{tutorial_url}" class="btn" target="_blank">👉 ACESSAR AS VÍDEO AULAS AGORA</a>
-      <p style="font-size: 12px; color: #666; margin-top: 8px;">Ou acesse diretamente pelo link:<br><a href="{tutorial_url}" style="color:#20A5A0; word-break: break-all;">{tutorial_url}</a></p>
+    <div class="box-video">
+      <p style="margin-bottom: 8px; font-weight: bold; font-size: 16px;">🎬 1. Vídeo Aula Prática Passo a Passo</p>
+      <a href="{final_tutorial_url}" class="btn-video" target="_blank">👉 ACESSAR A VÍDEO AULA AGORA</a>
+      <p style="font-size: 12px; color: #666; margin-top: 8px;"><a href="{final_tutorial_url}" style="color:#20A5A0;">{final_tutorial_url}</a></p>
     </div>
 
-    <p><b>O que você vai encontrar:</b></p>
-    <ul style="padding-left: 20px; font-size: 15px; line-height: 1.6;">
-      <li>11 módulos em vídeo aulas práticas passo a passo</li>
-      <li>Kit completo de prompts prontos para copiar e colar</li>
-      <li>Método completo para criar sua série 2D com Claude e ElevenLabs</li>
-    </ul>
+    <div class="box-pdf">
+      <p style="margin-bottom: 8px; font-weight: bold; font-size: 16px;">📖 2. E-book Guia Completo com Prompts (PDF)</p>
+      <a href="{final_pdf_url}" class="btn-pdf" target="_blank">📥 BAIXAR O E-BOOK COMPLETO (PDF)</a>
+      <p style="font-size: 12px; color: #666; margin-top: 8px;"><a href="{final_pdf_url}" style="color:#20A5A0;">{final_pdf_url}</a></p>
+    </div>
 
     <div class="footer">
       Dúvidas? Basta responder a esta mensagem.<br>
@@ -247,6 +255,7 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
                     "id": payment_id,
                     "status": status,
                     "tutorial_url": tutorial_url,
+                    "pdf_url": config.get("pdf_url", "/Curso_Visual_Historias_Animadas_Parte_1.pdf"),
                     "email_sent": p_data.get("email_sent", False),
                     "demo": True
                 })
@@ -289,6 +298,7 @@ class CheckoutHandler(SimpleHTTPRequestHandler):
                         "status": status,
                         "status_detail": data.get("status_detail"),
                         "tutorial_url": tutorial_url,
+                        "pdf_url": config.get("pdf_url", "/Curso_Visual_Historias_Animadas_Parte_1.pdf"),
                         "email_sent": email_sent,
                         "demo": False
                     })

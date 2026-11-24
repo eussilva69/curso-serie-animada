@@ -12,7 +12,8 @@ function getConfig() {
     smtp_port: 465,
     smtp_user: process.env.SMTP_USER || "glcodingweb@gmail.com",
     smtp_pass: process.env.SMTP_PASS || "pazgfxmesdsdknuk",
-    tutorial_url: process.env.TUTORIAL_URL || "https://youtu.be/xxJby0kUv08"
+    tutorial_url: process.env.TUTORIAL_URL || "https://youtu.be/xxJby0kUv08",
+    pdf_url: process.env.PDF_URL || "https://lucasvideos.vercel.app/Curso_Visual_Historias_Animadas_Parte_1.pdf"
   };
   try {
     const configPath = path.join(process.cwd(), 'config.json');
@@ -24,7 +25,7 @@ function getConfig() {
   return defaults;
 }
 
-async function sendEmail(buyerEmail, buyerName, tutorialUrl) {
+async function sendEmail(buyerEmail, buyerName, tutorialUrl, pdfUrl) {
   const config = getConfig();
   if (!buyerEmail || !config.smtp_user || !config.smtp_pass) return false;
 
@@ -38,25 +39,36 @@ async function sendEmail(buyerEmail, buyerName, tutorialUrl) {
     }
   });
 
-  const title = config.product_title || "Série Animada do Zero";
+  const title = config.product_title || "Faça sua série animada e ganhe com isso";
   const name = buyerName || "Aluno(a)";
+  const finalTutorialUrl = tutorialUrl || config.tutorial_url;
+  const finalPdfUrl = pdfUrl || config.pdf_url;
 
   const mailOptions = {
     from: `"${title}" <${config.smtp_user}>`,
     to: buyerEmail,
-    subject: `🎉 Seu Acesso Chegou: ${title} (Vídeo Aula Completa)`,
-    text: `Olá, ${name}!\n\nSeu pagamento de R$ 9,90 via Pix foi confirmado com sucesso!\n\nAqui está o seu link de acesso à vídeo aula:\n${tutorialUrl}\n\nBons estudos!\nEquipe ${title} · @caio.deferias`,
+    subject: `🎉 Seus Acessos Chegaram: ${title} (Vídeo Aula + E-book PDF)`,
+    text: `Olá, ${name}!\n\nSeu pagamento de R$ 9,90 via Pix foi confirmado com sucesso!\n\nAqui estão os seus links de acesso:\n\n1) VÍDEO AULA COMPLETA:\n${finalTutorialUrl}\n\n2) E-BOOK GUIA COMPLETO COM PROMPTS (PDF):\n${finalPdfUrl}\n\nBons estudos!\nEquipe ${title} · @caio.deferias`,
     html: `
       <div style="font-family: sans-serif; background-color: #FFF7F2; padding: 20px; color: #16131F;">
-        <div style="max-width: 520px; margin: 0 auto; background: #fff; border: 3px solid #16131F; border-radius: 18px; padding: 30px 24px;">
+        <div style="max-width: 540px; margin: 0 auto; background: #fff; border: 3px solid #16131F; border-radius: 18px; padding: 30px 24px;">
           <h1 style="font-size: 24px; margin: 0 0 12px 0;">Parabéns, ${name}! 🎉</h1>
-          <p>O seu pagamento de <b>R$ 9,90</b> via Pix foi aprovado com sucesso!</p>
-          <div style="background: #FFE3EC; border: 2px dashed #FF5D8F; border-radius: 12px; padding: 16px; margin: 20px 0; text-align: center;">
-            <p style="margin: 0 0 10px 0; font-weight: bold;">👇 Clique abaixo para assistir à vídeo aula:</p>
-            <a href="${tutorialUrl}" target="_blank" style="display: inline-block; background: #FF5D8F; color: #fff; text-decoration: none; font-size: 18px; font-weight: bold; padding: 14px 28px; border: 2px solid #16131F; border-radius: 10px;">👉 ACESSAR A VÍDEO AULA AGORA</a>
-            <p style="margin: 10px 0 0 0; font-size: 12px;"><a href="${tutorialUrl}" style="color: #20A5A0;">${tutorialUrl}</a></p>
+          <p style="font-size: 16px; line-height: 1.5;">O seu pagamento de <b>R$ 9,90</b> via Pix foi aprovado com sucesso!</p>
+          <p style="font-size: 15px; color: #555;">Seus 2 entregáveis completos já estão liberados abaixo:</p>
+
+          <div style="background: #FFE3EC; border: 2px dashed #FF5D8F; border-radius: 12px; padding: 18px; margin: 20px 0; text-align: center;">
+            <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 16px;">🎬 1. Vídeo Aula Prática Passo a Passo</p>
+            <a href="${finalTutorialUrl}" target="_blank" style="display: inline-block; background: #FF5D8F; color: #ffffff; text-decoration: none; font-size: 17px; font-weight: bold; padding: 14px 24px; border: 2px solid #16131F; border-radius: 10px;">👉 ACESSAR A VÍDEO AULA AGORA</a>
+            <p style="margin: 8px 0 0 0; font-size: 12px;"><a href="${finalTutorialUrl}" style="color: #20A5A0;">${finalTutorialUrl}</a></p>
           </div>
-          <p>Bons estudos e sucesso na sua série!<br><b>${title}</b> · @caio.deferias</p>
+
+          <div style="background: #E8F8F7; border: 2px dashed #20A5A0; border-radius: 12px; padding: 18px; margin: 20px 0; text-align: center;">
+            <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 16px;">📖 2. E-book Guia Completo com Prompts (PDF)</p>
+            <a href="${finalPdfUrl}" target="_blank" style="display: inline-block; background: #20A5A0; color: #ffffff; text-decoration: none; font-size: 17px; font-weight: bold; padding: 14px 24px; border: 2px solid #16131F; border-radius: 10px;">📥 BAIXAR O E-BOOK COMPLETO (PDF)</a>
+            <p style="margin: 8px 0 0 0; font-size: 12px;"><a href="${finalPdfUrl}" style="color: #20A5A0;">${finalPdfUrl}</a></p>
+          </div>
+
+          <p style="font-size: 14px; color: #666; margin-top: 24px;">Bons estudos e muito sucesso criando sua série animada!<br><b>${title}</b> · @caio.deferias</p>
         </div>
       </div>
     `
@@ -109,7 +121,7 @@ export default async function handler(req, res) {
 
       if (!sentEmails.has(key)) {
         sentEmails.add(key);
-        await sendEmail(buyerEmail, buyerName, config.tutorial_url);
+        await sendEmail(buyerEmail, buyerName, config.tutorial_url, config.pdf_url);
         emailSent = true;
       }
     }
@@ -119,6 +131,7 @@ export default async function handler(req, res) {
       status: status,
       status_detail: data.status_detail,
       tutorial_url: config.tutorial_url,
+      pdf_url: config.pdf_url,
       email_sent: emailSent
     });
   } catch (err) {
