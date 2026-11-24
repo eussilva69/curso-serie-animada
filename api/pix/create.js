@@ -6,7 +6,7 @@ function getConfig() {
   const defaults = {
     mercado_pago_access_token: process.env.MERCADO_PAGO_ACCESS_TOKEN || "APP_USR-7458996510149615-110903-8738600b8589a9741d32a85a8040d38b-408387365",
     product_title: "Faça sua série animada e ganhe com isso",
-    product_price: 29.90
+    product_price: 9.90
   };
   try {
     const configPath = path.join(process.cwd(), 'config.json');
