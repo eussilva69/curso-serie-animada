@@ -1,9 +1,3 @@
 {
-  "version": 2,
-  "crons": [
-    {
-      "path": "/api/pix/sync",
-      "schedule": "* * * * *"
-    }
-  ]
+  "version": 2
 }
